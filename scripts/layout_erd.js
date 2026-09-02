@@ -957,7 +957,7 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
   const entityShapeIdx = {};
   let shapeIdx = 0;
 
-  // 绘制实体和属性
+  // === 第一步：放置实体 ===
   for (let i = 0; i < entityCount; i++) {
     const pos = positions[i];
     const ex = pos.x;
@@ -982,64 +982,167 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     });
     entityShapeIdx[i] = shapeIdx;
     shapeIdx++;
+  }
 
-    // 属性：均匀分布原则
-    // 1. 避开关系连线方向
-    // 2. 每个方向最多 3-4 个属性
-    // 3. 同一方向的属性必须对齐（同一水平线或垂直线）
-    // 4. 避免连线交叉
+  // === 第二步：计算菱形位置（用于碰撞检测）===
+  const entityNameToIdx = {};
+  entities.forEach((e, i) => { entityNameToIdx[e.name] = i; });
+
+  const rhombusPositions = [];
+  const relConnections = []; // 关系连线信息
+
+  for (const rel of relationships) {
+    const fromIdx = entityNameToIdx[rel.from];
+    const toIdx = entityNameToIdx[rel.to];
+    if (fromIdx === undefined || toIdx === undefined) continue;
+
+    const fromPos = entityPositions[rel.from];
+    const toPos = entityPositions[rel.to];
+
+    const relCx = (fromPos.cx + toPos.cx) / 2;
+    const relCy = (fromPos.cy + toPos.cy) / 2;
+    const relX = relCx - relW / 2;
+    const relY = relCy - relH / 2;
+
+    rhombusPositions.push({ x: relX, y: relY, w: relW, h: relH, cx: relCx, cy: relCy });
+
+    // 记录关系连线（实体中心到菱形中心）
+    const connDir = getConnectionDirection(fromPos, toPos);
+    relConnections.push({
+      from: fromPos, to: toPos,
+      rhombus: { x: relX, y: relY, w: relW, h: relH, cx: relCx, cy: relCy },
+      dir: connDir
+    });
+  }
+
+  // === 第三步：放置属性（带碰撞检测）===
+  for (let i = 0; i < entityCount; i++) {
+    const pos = positions[i];
+    const ex = pos.x;
+    const ey = pos.y;
+    const epos = entityPositions[entities[i].name];
+    const ecx = epos.cx;
+    const ecy = epos.cy;
+
     const attrs = entities[i].attributes || [];
     const attrCount = attrs.length;
     
-    // 所有可能的方向
     const allDirs = ['top', 'bottom', 'left', 'right'];
-    
-    // 排除有关系连线的方向
     const relationDirs = getRelationDirections(entities[i].name, entities, relationships, positions);
     let availableDirs = allDirs.filter(dir => !relationDirs.includes(dir));
     
-    // 如果排除后没有方向了，使用默认方向
     if (availableDirs.length === 0) {
       availableDirs = ['top', 'bottom'];
     }
     
-    // 均匀分配：每个方向最多 maxPerDir 个属性
-    const maxPerDir = 4; // 每个方向最多 4 个属性
+    const maxPerDir = 4;
     const minDirsNeeded = Math.ceil(attrCount / maxPerDir);
     
-    // 如果可用方向不够，使用更多方向
     if (availableDirs.length < minDirsNeeded) {
-      // 从所有方向中选择，优先选择非关系方向
       const priorityDirs = availableDirs;
       const secondaryDirs = allDirs.filter(dir => !availableDirs.includes(dir));
       availableDirs = [...priorityDirs, ...secondaryDirs].slice(0, minDirsNeeded);
     }
     
-    // 计算每个方向的属性数（尽量均匀）
     const perDir = Math.floor(attrCount / availableDirs.length);
     const remainder = attrCount % availableDirs.length;
     
     const dirAttrs = {};
     let attrIdx = 0;
     availableDirs.forEach((dir, idx) => {
-      // 前 remainder 个方向多分 1 个
       const count = perDir + (idx < remainder ? 1 : 0);
       dirAttrs[dir] = attrs.slice(attrIdx, attrIdx + count);
       attrIdx += count;
     });
-    
-    // 调试输出
-    console.log(`  ${entities[i].name}: ${attrCount} 个属性，关系方向=${relationDirs.join(',')}, 可用方向=${availableDirs.join(',')}, 分配=${Object.entries(dirAttrs).map(([d,a]) => `${d}:${a.length}`).join(',')}`);
 
+    // 对每个方向，计算安全距离（避免与菱形/连线碰撞）
     for (const dir of availableDirs) {
       const dirAttrList = dirAttrs[dir];
       if (!dirAttrList || dirAttrList.length === 0) continue;
       const count = dirAttrList.length;
 
+      // 计算属性组的边界
+      let attrBounds;
       if (dir === 'top' || dir === 'bottom') {
         const totalW = count * attrW + (count - 1) * attrGap;
         const startX = ecx - totalW / 2;
-        const y = dir === 'top' ? (ey - attrH - attrDistance) : (ey + entityH + attrDistance);
+        attrBounds = { x: startX, y: 0, w: totalW, h: attrH };
+      } else {
+        const totalH = count * attrH + (count - 1) * attrGap;
+        const startY = ecy - totalH / 2;
+        attrBounds = { x: 0, y: startY, w: attrW, h: totalH };
+      }
+
+      // 计算安全距离：检测与菱形和连线的碰撞
+      let safeDistance = attrDistance;
+      const maxIterations = 10;
+      
+      for (let iter = 0; iter < maxIterations; iter++) {
+        let collision = false;
+        
+        // 检测与菱形的碰撞
+        for (const rhombus of rhombusPositions) {
+          if (dir === 'top' || dir === 'bottom') {
+            const attrY = dir === 'top' ? (ey - attrH - safeDistance) : (ey + entityH + safeDistance);
+            const testBounds = { x: attrBounds.x, y: attrY, w: attrBounds.w, h: attrBounds.h };
+            if (rectsOverlap(testBounds, rhombus, 10)) {
+              collision = true;
+              break;
+            }
+          } else {
+            const attrX = dir === 'left' ? (ex - attrW - safeDistance) : (ex + entityW + safeDistance);
+            const testBounds = { x: attrX, y: attrBounds.y, w: attrBounds.w, h: attrBounds.h };
+            if (rectsOverlap(testBounds, rhombus, 10)) {
+              collision = true;
+              break;
+            }
+          }
+        }
+        
+        // 检测与关系连线的碰撞
+        if (!collision) {
+          for (const relConn of relConnections) {
+            const { from, to, rhombus, dir: relDir } = relConn;
+            
+            if (dir === 'top' || dir === 'bottom') {
+              const attrY = dir === 'top' ? (ey - attrH - safeDistance) : (ey + entityH + safeDistance);
+              // 检查连线是否穿过属性行的 y 范围
+              const lineY1 = Math.min(from.cy, to.cy, rhombus.cy);
+              const lineY2 = Math.max(from.cy, to.cy, rhombus.cy);
+              if (attrY >= lineY1 - attrH && attrY <= lineY2 + attrH) {
+                // 检查 x 范围是否重叠
+                const lineX1 = Math.min(from.cx, to.cx, rhombus.cx);
+                const lineX2 = Math.max(from.cx, to.cx, rhombus.cx);
+                if (attrBounds.x < lineX2 + attrW && attrBounds.x + attrBounds.w > lineX1 - attrW) {
+                  collision = true;
+                  break;
+                }
+              }
+            } else {
+              const attrX = dir === 'left' ? (ex - attrW - safeDistance) : (ex + entityW + safeDistance);
+              const lineX1 = Math.min(from.cx, to.cx, rhombus.cx);
+              const lineX2 = Math.max(from.cx, to.cx, rhombus.cx);
+              if (attrX >= lineX1 - attrW && attrX <= lineX2 + attrW) {
+                const lineY1 = Math.min(from.cy, to.cy, rhombus.cy);
+                const lineY2 = Math.max(from.cy, to.cy, rhombus.cy);
+                if (attrBounds.y < lineY2 + attrH && attrBounds.y + attrBounds.h > lineY1 - attrH) {
+                  collision = true;
+                  break;
+                }
+              }
+            }
+          }
+        }
+        
+        if (!collision) break;
+        safeDistance += 30; // 每次增加 30px
+      }
+
+      // 放置属性（使用安全距离）
+      if (dir === 'top' || dir === 'bottom') {
+        const totalW = count * attrW + (count - 1) * attrGap;
+        const startX = ecx - totalW / 2;
+        const y = dir === 'top' ? (ey - attrH - safeDistance) : (ey + entityH + safeDistance);
 
         for (let j = 0; j < count; j++) {
           const ax = startX + j * (attrW + attrGap);
@@ -1073,7 +1176,7 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
       } else {
         const totalH = count * attrH + (count - 1) * attrGap;
         const startY = ecy - totalH / 2;
-        const x = dir === 'left' ? (ex - attrW - attrDistance) : (ex + entityW + attrDistance);
+        const x = dir === 'left' ? (ex - attrW - safeDistance) : (ex + entityW + safeDistance);
 
         for (let j = 0; j < count; j++) {
           const ax = x;
@@ -1108,13 +1211,7 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     }
   }
 
-  // 关系菱形
-  const entityNameToIdx = {};
-  entities.forEach((e, i) => { entityNameToIdx[e.name] = i; });
-
-  // 收集所有关系菱形位置，用于后续碰撞检测
-  const rhombusPositions = [];
-
+  // === 第四步：放置菱形和关系连线 ===
   for (const rel of relationships) {
     const fromIdx = entityNameToIdx[rel.from];
     const toIdx = entityNameToIdx[rel.to];
@@ -1142,12 +1239,6 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
       }
     });
     const relShapeIdx = shapes.length - 1;
-
-    // 记录菱形位置用于碰撞检测
-    rhombusPositions.push({
-      x: relX, y: relY, w: relW, h: relH,
-      cx: relCx, cy: relCy
-    });
 
     const connDir = getConnectionDirection(fromPos, toPos);
     let fromExitX, fromExitY, toExitX, toExitY;
@@ -1218,16 +1309,6 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     });
     shapeIdx++;
   }
-
-  // === 碰撞检测与解决 ===
-  // 原则：实体属性和线条不能遮挡和交叉
-  
-  // 暂时禁用碰撞检测，先确保属性对齐
-  // 1. 解决属性与菱形的重叠
-  // const attrRhombusResolved = resolveAttrRhombusOverlap(shapes, rhombusPositions, attrDistance);
-  
-  // 2. 解决属性与连接线的交叉
-  // const attrLineResolved = resolveAttrLineOverlap(shapes, connections, entityPositions, attrDistance);
 
   // 调整画布大小
   let maxX = 0, maxY = 0;
