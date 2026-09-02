@@ -103,12 +103,25 @@ function parseMarkdown(text) {
 /**
  * 检查是否需要使用两步布局
  */
+/**
+ * 判断是否需要两步布局
+ * 触发条件（满足任一）：
+ * 1. 任一实体属性数 > maxAttrs（默认 8）
+ * 2. 实体数量 > 4
+ */
 function needsTwoStepLayout(entities, maxAttrs = 8) {
+  // 条件 1：实体数量 > 4
+  if (entities.length > 4) {
+    return true;
+  }
+  
+  // 条件 2：任一实体属性数 > maxAttrs
   for (const entity of entities) {
     if ((entity.attributes || []).length > maxAttrs) {
       return true;
     }
   }
+  
   return false;
 }
 
