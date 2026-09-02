@@ -553,32 +553,40 @@ class DrawioSvgPreview {
     const shapes = [];
     const cellMap = {}; // 存储所有 cell 的坐标
     
-    // 解析矩形/椭圆（有 width/height）- 使用更精确的正则，不跨越</mxCell>
-    const rectRegex = /<mxCell([^>]*)>[\s\S]*?<mxGeometry([^>]*)\/?>[\s\S]*?<\/mxCell>/g;
+    // 解析每个 mxCell 标签
+    // 匹配非自闭合的 mxCell（有内容）和自闭合的 mxCell
+    const cellRegex = /<mxCell\s+([^>]*?)>(?:(?!<mxCell)[\s\S])*?<\/mxCell>|<mxCell\s+([^>]*?)\/?>/g;
     
     let match;
-    while ((match = rectRegex.exec(content)) !== null) {
-      const cellTag = match[1];
-      const geomTag = match[2];
+    while ((match = cellRegex.exec(content)) !== null) {
+      const cellTag = match[1] || match[2] || '';
+      const innerContent = match[0] || '';
       
       // 提取 id, value, style
-      const idMatch = cellTag.match(/id="([^"]*)"/);
-      const valueMatch = cellTag.match(/value="([^"]*)"/);
-      const styleMatch = cellTag.match(/style="([^"]*)"/);
+      const idMatch = cellTag.match(/\bid="([^"]*)"/);
+      const valueMatch = cellTag.match(/\bvalue="([^"]*)"/);
+      const styleMatch = cellTag.match(/\bstyle="([^"]*)"/);
       
-      // 提取 x, y, width, height
-      const xMatch = geomTag.match(/x="([^"]*)"/);
-      const yMatch = geomTag.match(/y="([^"]*)"/);
-      const wMatch = geomTag.match(/width="([^"]*)"/);
-      const hMatch = geomTag.match(/height="([^"]*)"/);
+      if (!idMatch) continue;
       
-      if (!idMatch || !xMatch || !yMatch || !wMatch || !hMatch) continue;
-      
-      const style = styleMatch ? styleMatch[1] : '';
-      
-      // 跳过 edge 类型（没有 x/y/width/height 的 geometry）
+      // 跳过 edge 类型
       if (cellTag.includes('edge="1"')) continue;
       
+      // 提取 geometry 中的 x, y, width, height
+      const geomRegex = /<mxGeometry\s+([^>]*?)\/?>/;
+      const geomMatch = innerContent.match(geomRegex);
+      
+      if (!geomMatch) continue;
+      
+      const geomTag = geomMatch[1];
+      const xMatch = geomTag.match(/\bx="([^"]*)"/);
+      const yMatch = geomTag.match(/\by="([^"]*)"/);
+      const wMatch = geomTag.match(/\bwidth="([^"]*)"/);
+      const hMatch = geomTag.match(/\bheight="([^"]*)"/);
+      
+      if (!xMatch || !yMatch || !wMatch || !hMatch) continue;
+      
+      const style = styleMatch ? styleMatch[1] : '';
       const cell = {
         id: idMatch[1],
         text: valueMatch ? valueMatch[1] : '',
