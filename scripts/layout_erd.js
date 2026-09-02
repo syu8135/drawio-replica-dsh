@@ -146,8 +146,9 @@ function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH,
   const positions = [];
   const centerX = canvasW / 2;
   const centerY = canvasH / 2;
-  const spreadX = Math.min(280, (canvasW - 2 * margin - entityW) / 2 * 0.8);
-  const spreadY = Math.min(200, (canvasH - 2 * margin - entityH) / 2 * 0.8);
+  // 增大 spread 上限，让实体分布更开，避免菱形重叠
+  const spreadX = Math.min(400, (canvasW - 2 * margin - entityW) / 2 * 0.85);
+  const spreadY = Math.min(300, (canvasH - 2 * margin - entityH) / 2 * 0.85);
 
   if (entityCount === 1) {
     // 居中
@@ -686,8 +687,8 @@ function layoutErd(structure) {
   // 3/5个实体时，关系最多的放最后（底部中间/中心位置）
   entities = reorderEntitiesForLayout(entities, relationships);
   
-  // 上半部分：实体关系图（高度约 500px）
-  const relDiagramHeight = 500;
+  // 上半部分：实体关系图（高度约 600px，拉开实体避免菱形重叠）
+  const relDiagramHeight = 600;
   // 下半部分：实体详细图（每个实体需要的高度）
   const maxAttrsPerEntity = Math.max(...entities.map(e => (e.attributes || []).length));
   const detailHeightPerEntity = entityH + 2 * (attrDistance + attrH) + 100; // 实体 + 上下属性 + 间距
