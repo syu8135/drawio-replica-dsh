@@ -1029,19 +1029,25 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     
     const allDirs = ['top', 'bottom', 'left', 'right'];
     const relationDirs = getRelationDirections(entities[i].name, entities, relationships, positions);
-    let availableDirs = allDirs.filter(dir => !relationDirs.includes(dir));
     
+    // 优先使用朝外方向（基于实体在布局中的位置）
+    const entityDirection = getEntityDirection(i, entityCount);
+    const outwardDirs = getOutwardDirections(entityDirection);
+    
+    // 从朝外方向中排除关系方向
+    let availableDirs = outwardDirs.filter(dir => !relationDirs.includes(dir));
+    
+    // 如果朝外方向不够，添加朝内方向
     if (availableDirs.length === 0) {
       availableDirs = ['top', 'bottom'];
-    }
-    
-    const maxPerDir = 4;
-    const minDirsNeeded = Math.ceil(attrCount / maxPerDir);
-    
-    if (availableDirs.length < minDirsNeeded) {
-      const priorityDirs = availableDirs;
-      const secondaryDirs = allDirs.filter(dir => !availableDirs.includes(dir));
-      availableDirs = [...priorityDirs, ...secondaryDirs].slice(0, minDirsNeeded);
+    } else {
+      const maxPerDir = 4;
+      const minDirsNeeded = Math.ceil(attrCount / maxPerDir);
+      if (availableDirs.length < minDirsNeeded) {
+        // 添加剩余方向（朝内方向）
+        const remainingDirs = allDirs.filter(dir => !availableDirs.includes(dir) && !relationDirs.includes(dir));
+        availableDirs = [...availableDirs, ...remainingDirs].slice(0, Math.max(minDirsNeeded, availableDirs.length));
+      }
     }
     
     const perDir = Math.floor(attrCount / availableDirs.length);
@@ -1085,14 +1091,14 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
           if (dir === 'top' || dir === 'bottom') {
             const attrY = dir === 'top' ? (ey - attrH - safeDistance) : (ey + entityH + safeDistance);
             const testBounds = { x: attrBounds.x, y: attrY, w: attrBounds.w, h: attrBounds.h };
-            if (rectsOverlap(testBounds, rhombus, 10)) {
+            if (rectsOverlap(testBounds, rhombus, 5)) {
               collision = true;
               break;
             }
           } else {
             const attrX = dir === 'left' ? (ex - attrW - safeDistance) : (ex + entityW + safeDistance);
             const testBounds = { x: attrX, y: attrBounds.y, w: attrBounds.w, h: attrBounds.h };
-            if (rectsOverlap(testBounds, rhombus, 10)) {
+            if (rectsOverlap(testBounds, rhombus, 5)) {
               collision = true;
               break;
             }
@@ -1103,6 +1109,14 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
         if (!collision) {
           for (const relConn of relConnections) {
             const { from, to, rhombus, dir: relDir } = relConn;
+            
+            // 计算连线的方向向量
+            const dx = to.cx - from.cx;
+            const dy = to.cy - from.cy;
+            const isDiagonal = Math.abs(dx) > 50 && Math.abs(dy) > 50;
+            
+            // 对于斜向连线，跳过碰撞检测（避免过度推远属性）
+            if (isDiagonal) continue;
             
             if (dir === 'top' || dir === 'bottom') {
               const attrY = dir === 'top' ? (ey - attrH - safeDistance) : (ey + entityH + safeDistance);
@@ -1135,7 +1149,7 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
         }
         
         if (!collision) break;
-        safeDistance += 30; // 每次增加 30px
+        safeDistance += 15; // 每次增加 15px（更精细的调整）
       }
 
       // 放置属性（使用安全距离）
