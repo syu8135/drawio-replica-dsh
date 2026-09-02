@@ -43,7 +43,7 @@ function parseNaturalLanguage(text) {
     const relMatch = line.match(/^(.+?)\s+(m:1|1:m|1:1|m:n|n:m|n:1|1:n)\s+(.+?)\s+(.+)$/);
     if (relMatch) {
       const from = relMatch[1].trim();
-      const cardinality = relMatch[2].trim().replace(/m/g, 'n');
+      const cardinality = relMatch[2].trim(); // 保留 m:n，不替换为 n:n
       const name = relMatch[3].trim();
       const to = relMatch[4].trim();
       const [fromCard, toCard] = cardinality.split(':');
@@ -695,8 +695,8 @@ function layoutErd(structure) {
   // 3/5个实体时，关系最多的放最后（底部中间/顶部位置）
   entities = reorderEntitiesForLayout(entities, relationships);
   
-  // 上半部分：实体关系图（根据实体数量调整高度）
-  const relDiagramHeight = entityCount <= 3 ? 500 : (entityCount <= 5 ? 700 : 800);
+  // 上半部分：实体关系图（根据实体数量调整高度，不绘制属性所以空间加倍）
+  const relDiagramHeight = entityCount <= 3 ? 800 : (entityCount <= 5 ? 1200 : 1500);
   // 下半部分：实体详细图（每个实体需要的高度）
   const maxAttrsPerEntity = Math.max(...entities.map(e => (e.attributes || []).length));
   const detailHeightPerEntity = entityH + 2 * (attrDistance + attrH) + 100; // 实体 + 上下属性 + 间距
