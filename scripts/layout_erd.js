@@ -113,7 +113,21 @@ function needsTwoStepLayout(entities, maxAttrs = 8) {
 }
 
 /**
- * 计算实体几何位置
+ * E-R 图实体布局总体原则
+ * 
+ * 实体数量 → 布局形状：
+ *   1 个：居中
+ *   2 个：水平线（左右）
+ *   3 个：倒三角 ▽（关系最多的在底部中间）
+ *   4 个：方形（四角）
+ *   5 个：星型（四角 + 中心，关系最多的在中心）
+ *   6 个：六边形（六个顶点）
+ *   7-9 个：环形（均匀分布在圆周上）
+ *   10+ 个：网格
+ * 
+ * 属性分布原则：
+ *   - 避开关系连线方向
+ *   - 在剩余方向均匀分布
  */
 function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH, margin) {
   const positions = [];
@@ -123,20 +137,50 @@ function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH,
   const spreadY = Math.min(200, (canvasH - 2 * margin - entityH) / 2 * 0.8);
 
   if (entityCount === 1) {
+    // 居中
     positions.push({ x: centerX - entityW / 2, y: centerY - entityH / 2 });
   } else if (entityCount === 2) {
+    // 水平线：左右分布
     positions.push({ x: centerX - spreadX - entityW / 2, y: centerY - entityH / 2 });
     positions.push({ x: centerX + spreadX - entityW / 2, y: centerY - entityH / 2 });
   } else if (entityCount === 3) {
-    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 });
-    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 });
-    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 });
+    // 倒三角 ▽：左上、右上、下中
+    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 }); // 左上
+    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 }); // 右上
+    positions.push({ x: centerX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 下中
   } else if (entityCount === 4) {
-    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 });
-    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 });
-    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 });
-    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 });
+    // 方形：左上、右上、左下、右下
+    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 }); // 左上
+    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 }); // 右上
+    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 左下
+    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 右下
+  } else if (entityCount === 5) {
+    // 星型：四角 + 中心
+    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 }); // 左上
+    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 }); // 右上
+    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 左下
+    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 右下
+    positions.push({ x: centerX - entityW / 2, y: centerY - entityH / 2 }); // 中心
+  } else if (entityCount === 6) {
+    // 六边形：六个顶点
+    const hexRadius = Math.min(spreadX, spreadY);
+    for (let i = 0; i < 6; i++) {
+      const angle = (Math.PI / 3) * i - Math.PI / 6; // 从顶部开始，顺时针
+      const x = centerX + hexRadius * Math.cos(angle) - entityW / 2;
+      const y = centerY + hexRadius * Math.sin(angle) - entityH / 2;
+      positions.push({ x, y });
+    }
+  } else if (entityCount >= 7 && entityCount <= 9) {
+    // 环形：均匀分布在圆周上
+    const ringRadius = Math.min(spreadX, spreadY);
+    for (let i = 0; i < entityCount; i++) {
+      const angle = (2 * Math.PI / entityCount) * i - Math.PI / 2; // 从顶部开始
+      const x = centerX + ringRadius * Math.cos(angle) - entityW / 2;
+      const y = centerY + ringRadius * Math.sin(angle) - entityH / 2;
+      positions.push({ x, y });
+    }
   } else {
+    // 10+ 个：网格布局
     const cols = Math.ceil(Math.sqrt(entityCount));
     const rows = Math.ceil(entityCount / cols);
     const cellW = (canvasW - 2 * margin) / cols;
@@ -153,30 +197,96 @@ function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH,
   return positions;
 }
 
+/**
+ * 根据关系数量重新排序实体
+ * 
+ * 3 个实体（倒三角）：关系最多的放最后（底部中间）
+ * 5 个实体（星型）：关系最多的放最后（中心位置）
+ */
+function reorderEntitiesForLayout(entities, relationships) {
+  if (entities.length !== 3 && entities.length !== 5) return entities;
+  
+  // 计算每个实体的关系数量
+  const relCount = entities.map(e => {
+    return relationships.filter(r => r.from === e.name || r.to === e.name).length;
+  });
+  
+  // 找到关系最多的实体索引
+  let maxIdx = 0;
+  for (let i = 1; i < relCount.length; i++) {
+    if (relCount[i] > relCount[maxIdx]) maxIdx = i;
+  }
+  
+  const targetIdx = entities.length - 1; // 最后一个位置（底部中间或中心）
+  const reordered = [...entities];
+  if (maxIdx !== targetIdx) {
+    const [maxEntity] = reordered.splice(maxIdx, 1);
+    reordered.push(maxEntity);
+  }
+  
+  return reordered;
+}
+
+/**
+ * 获取实体在布局中的方向标识
+ * 用于确定属性分布的朝外方向
+ */
 function getEntityDirection(entityIndex, entityCount) {
   if (entityCount <= 2) return entityIndex === 0 ? 'left' : 'right';
   if (entityCount === 3) {
+    // 倒三角：左上、右上、下中
     if (entityIndex === 0) return 'top-left';
     if (entityIndex === 1) return 'top-right';
-    return 'bottom-right';
+    return 'bottom-center';
   }
   if (entityCount === 4) {
+    // 方形：左上、右上、左下、右下
     if (entityIndex === 0) return 'top-left';
     if (entityIndex === 1) return 'top-right';
     if (entityIndex === 2) return 'bottom-left';
     return 'bottom-right';
   }
+  if (entityCount === 5) {
+    // 星型：左上、右上、左下、右下、中心
+    if (entityIndex === 0) return 'top-left';
+    if (entityIndex === 1) return 'top-right';
+    if (entityIndex === 2) return 'bottom-left';
+    if (entityIndex === 3) return 'bottom-right';
+    return 'center';
+  }
+  if (entityCount === 6) {
+    // 六边形：从顶部顺时针编号
+    const dirs = ['top', 'top-right', 'bottom-right', 'bottom', 'bottom-left', 'top-left'];
+    return dirs[entityIndex] || 'center';
+  }
+  if (entityCount >= 7 && entityCount <= 9) {
+    // 环形：根据角度判断方向
+    const angle = (2 * Math.PI / entityCount) * entityIndex - Math.PI / 2;
+    const deg = (angle * 180 / Math.PI + 360) % 360;
+    if (deg >= 315 || deg < 45) return 'top';
+    if (deg >= 45 && deg < 90) return 'top-right';
+    if (deg >= 90 && deg < 135) return 'right';
+    if (deg >= 135 && deg < 225) return 'bottom';
+    if (deg >= 225 && deg < 270) return 'left';
+    return 'top-left';
+  }
   return 'center';
 }
 
+/**
+ * 根据方向标识获取属性分布的朝外方向
+ */
 function getOutwardDirections(direction) {
   switch (direction) {
     case 'left': return ['left'];
     case 'right': return ['right'];
+    case 'top': return ['top'];
+    case 'bottom': return ['bottom'];
     case 'top-left': return ['top', 'left'];
     case 'top-right': return ['top', 'right'];
     case 'bottom-left': return ['bottom', 'left'];
     case 'bottom-right': return ['bottom', 'right'];
+    case 'bottom-center': return ['bottom', 'left', 'right'];
     case 'center': return ['top', 'bottom', 'left', 'right'];
     default: return ['top', 'bottom'];
   }
@@ -560,6 +670,9 @@ function layoutErd(structure) {
   }
 
   // 两步布局
+  // 3/5个实体时，关系最多的放最后（底部中间/中心位置）
+  entities = reorderEntitiesForLayout(entities, relationships);
+  
   // 上半部分：实体关系图（高度约 500px）
   const relDiagramHeight = 500;
   // 下半部分：实体详细图（每个实体需要的高度）
@@ -634,6 +747,9 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
   const attrGap = style.spacing.attrGap || 12;
   const attrDistance = style.spacing.attrDistance || 70;
   const margin = 150;
+  
+  // 3/5个实体时，关系最多的放最后（底部中间/中心位置）
+  entities = reorderEntitiesForLayout(entities, relationships);
   const entityCount = entities.length;
 
   const minW = entityCount <= 2 ? 800 : 1400;
