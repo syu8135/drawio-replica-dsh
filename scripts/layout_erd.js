@@ -253,6 +253,54 @@ function reorderEntitiesForLayout(entities, relationships) {
 }
 
 /**
+ * 贪心环形排序：让有关系的实体尽量相邻，减少连线交叉
+ * 适用于 5+ 实体的环形/多边形布局
+ * 
+ * 算法：从关系最多的实体开始，每次选择与已放置实体连接最多
+ * （并列时优先与上一个放置的实体相连）的实体放在下一个位置
+ */
+function reorderEntitiesForRing(entities, relationships) {
+  if (entities.length < 5) return entities;
+  
+  const relCount = entities.map(e =>
+    relationships.filter(r => r.from === e.name || r.to === e.name).length);
+  const hasEdge = (a, b) =>
+    relationships.some(r => (r.from === a && r.to === b) || (r.from === b && r.to === a));
+  
+  // 从关系最多的实体开始（放在顶部 index 0）
+  let start = 0;
+  for (let i = 1; i < relCount.length; i++) {
+    if (relCount[i] > relCount[start]) start = i;
+  }
+  
+  const order = [entities[start]];
+  const used = new Set([start]);
+  
+  while (order.length < entities.length) {
+    const last = order[order.length - 1];
+    let best = -1, bestConn = -1, bestConnLast = 0, bestRel = -1;
+    for (let i = 0; i < entities.length; i++) {
+      if (used.has(i)) continue;
+      // 与已放置实体的连接数
+      let conn = 0;
+      for (const e of order) {
+        if (hasEdge(e.name, entities[i].name)) conn++;
+      }
+      const connLast = hasEdge(last.name, entities[i].name) ? 1 : 0;
+      if (conn > bestConn ||
+          (conn === bestConn && connLast > bestConnLast) ||
+          (conn === bestConn && connLast === bestConnLast && relCount[i] > bestRel)) {
+        best = i; bestConn = conn; bestConnLast = connLast; bestRel = relCount[i];
+      }
+    }
+    order.push(entities[best]);
+    used.add(best);
+  }
+  
+  return order;
+}
+
+/**
  * 获取实体在布局中的方向标识
  * 用于确定属性分布的朝外方向
  */
@@ -692,8 +740,10 @@ function layoutErd(structure) {
   }
 
   // 两步布局
-  // 3/5个实体时，关系最多的放最后（底部中间/顶部位置）
-  entities = reorderEntitiesForLayout(entities, relationships);
+  // 3个实体：关系最多的放底部中间；5+实体：贪心环形排序让相关实体相邻（减少交叉）
+  entities = entityCount >= 5
+    ? reorderEntitiesForRing(entities, relationships)
+    : reorderEntitiesForLayout(entities, relationships);
   
   // 上半部分：实体关系图（根据实体数量调整高度，不绘制属性所以空间加倍）
   const relDiagramHeight = entityCount <= 3 ? 800 : (entityCount <= 5 ? 1200 : 1500);
