@@ -196,6 +196,44 @@ function getConnectionDirection(posA, posB) {
 }
 
 /**
+ * 获取实体有关系连线的方向
+ * 用于排除属性分布方向，避免属性与关系连线重叠
+ */
+function getRelationDirections(entityName, entities, relationships, positions) {
+  const relationDirs = [];
+  const entityIndex = entities.findIndex(e => e.name === entityName);
+  if (entityIndex === -1) return relationDirs;
+  
+  const pos = positions[entityIndex];
+  const ecx = pos.x + 60; // entityW/2
+  const ecy = pos.y + 30; // entityH/2
+  
+  for (const rel of relationships) {
+    if (rel.from !== entityName && rel.to !== entityName) continue;
+    
+    const otherName = rel.from === entityName ? rel.to : rel.from;
+    const otherIndex = entities.findIndex(e => e.name === otherName);
+    if (otherIndex === -1) continue;
+    
+    const otherPos = positions[otherIndex];
+    const otherCx = otherPos.x + 60;
+    const otherCy = otherPos.y + 30;
+    
+    const dx = otherCx - ecx;
+    const dy = otherCy - ecy;
+    
+    // 判断关系在哪个方向
+    if (Math.abs(dx) > Math.abs(dy)) {
+      relationDirs.push(dx > 0 ? 'right' : 'left');
+    } else {
+      relationDirs.push(dy > 0 ? 'bottom' : 'top');
+    }
+  }
+  
+  return relationDirs;
+}
+
+/**
  * 绘制实体关系图（不绘制属性）
  */
 function drawRelationshipDiagram(entities, relationships, positions, style, offsetY = 0) {
@@ -634,21 +672,21 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     entityShapeIdx[i] = shapeIdx;
     shapeIdx++;
 
-    // 属性：根据数量智能分布
+    // 属性：根据实体位置分配到朝外方向，避开关系连线方向
     const attrs = entities[i].attributes || [];
     const attrCount = attrs.length;
     
-    // 智能分布策略：
-    // <= 4 个：全部放上方
-    // 5-8 个：上方和下方
-    // > 8 个：四个方向（但传统布局最多8个，所以这里用上方+下方）
-    let outwardDirs = [];
-    if (attrCount <= 4) {
-      outwardDirs = ['top'];
-    } else if (attrCount <= 8) {
+    // 获取实体在布局中的位置方向
+    const direction = getEntityDirection(i, entityCount);
+    let outwardDirs = getOutwardDirections(direction);
+    
+    // 排除有关系连线的方向
+    const relationDirs = getRelationDirections(entities[i].name, entities, relationships, positions);
+    outwardDirs = outwardDirs.filter(dir => !relationDirs.includes(dir));
+    
+    // 如果排除后没有方向了，使用默认方向
+    if (outwardDirs.length === 0) {
       outwardDirs = ['top', 'bottom'];
-    } else {
-      outwardDirs = ['top', 'bottom', 'left', 'right'];
     }
     
     const perDir = Math.ceil(attrCount / outwardDirs.length);
