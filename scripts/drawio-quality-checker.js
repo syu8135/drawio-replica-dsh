@@ -521,11 +521,11 @@ class DrawioSvgPreview {
   generateSvg(drawioPath, outputPath) {
     const content = fs.readFileSync(drawioPath, 'utf-8');
     
-    // 提取画布尺寸
-    const widthMatch = content.match(/pageWidth="(\d+)"/);
-    const heightMatch = content.match(/pageHeight="(\d+)"/);
-    const width = widthMatch ? parseInt(widthMatch[1]) : 800;
-    const height = heightMatch ? parseInt(heightMatch[1]) : 600;
+    // 提取画布尺寸（支持小数）
+    const widthMatch = content.match(/pageWidth="([\d.]+)"/);
+    const heightMatch = content.match(/pageHeight="([\d.]+)"/);
+    const width = widthMatch ? Math.ceil(parseFloat(widthMatch[1])) : 800;
+    const height = heightMatch ? Math.ceil(parseFloat(heightMatch[1])) : 600;
     
     // 解析图形元素
     const shapes = this.parseShapes(content);
