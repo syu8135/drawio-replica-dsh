@@ -733,6 +733,188 @@ function layoutErd(structure) {
 }
 
 /**
+ * E-R 图布局原则：实体属性和线条不能遮挡和交叉
+ * 
+ * 检测并解决以下冲突：
+ * 1. 属性椭圆与关系菱形重叠
+ * 2. 属性椭圆与连接线交叉
+ * 3. 连接线之间交叉
+ */
+
+/**
+ * 检测两个矩形是否重叠（用于属性椭圆和菱形的碰撞检测）
+ */
+function rectsOverlap(r1, r2, padding = 5) {
+  return !(r1.x + r1.w + padding < r2.x || 
+           r2.x + r2.w + padding < r1.x || 
+           r1.y + r1.h + padding < r2.y || 
+           r2.y + r2.h + padding < r1.y);
+}
+
+/**
+ * 检测线段是否与矩形相交
+ */
+function lineIntersectsRect(x1, y1, x2, y2, rect) {
+  const { x, y, w, h } = rect;
+  
+  // 检查线段是否与矩形的四条边相交
+  const edges = [
+    { x1: x, y1: y, x2: x + w, y2: y },           // 上边
+    { x1: x + w, y1: y, x2: x + w, y2: y + h },   // 右边
+    { x1: x + w, y1: y + h, x2: x, y2: y + h },   // 下边
+    { x1: x, y1: y + h, x2: x, y2: y }            // 左边
+  ];
+  
+  for (const edge of edges) {
+    if (lineSegmentsIntersect(x1, y1, x2, y2, edge.x1, edge.y1, edge.x2, edge.y2)) {
+      return true;
+    }
+  }
+  
+  // 检查线段端点是否在矩形内
+  if (pointInRect(x1, y1, rect) || pointInRect(x2, y2, rect)) {
+    return true;
+  }
+  
+  return false;
+}
+
+/**
+ * 检测两条线段是否相交
+ */
+function lineSegmentsIntersect(x1, y1, x2, y2, x3, y3, x4, y4) {
+  const d = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3);
+  if (d === 0) return false;
+  
+  const t = ((x3 - x1) * (y4 - y3) - (y3 - y1) * (x4 - x3)) / d;
+  const u = -((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)) / d;
+  
+  return t >= 0 && t <= 1 && u >= 0 && u <= 1;
+}
+
+/**
+ * 检测点是否在矩形内
+ */
+function pointInRect(px, py, rect) {
+  return px >= rect.x && px <= rect.x + rect.w && 
+         py >= rect.y && py <= rect.y + rect.h;
+}
+
+/**
+ * 解决属性与菱形的重叠冲突
+ * 将重叠的属性沿远离菱形的方向移动
+ */
+function resolveAttrRhombusOverlap(shapes, rhombusPositions, attrDistance = 70) {
+  const attrShapes = shapes.filter(s => s.type === 'ellipse');
+  const resolved = [];
+  
+  for (const attr of attrShapes) {
+    let overlap = false;
+    let moveDir = null;
+    
+    for (const rhombus of rhombusPositions) {
+      if (rectsOverlap(attr, rhombus)) {
+        overlap = true;
+        
+        // 计算属性相对于菱形的方向
+        const attrCx = attr.x + attr.w / 2;
+        const attrCy = attr.y + attr.h / 2;
+        const rhombusCx = rhombus.x + rhombus.w / 2;
+        const rhombusCy = rhombus.y + rhombus.h / 2;
+        
+        const dx = attrCx - rhombusCx;
+        const dy = attrCy - rhombusCy;
+        
+        // 沿远离菱形的方向移动
+        if (Math.abs(dx) > Math.abs(dy)) {
+          moveDir = dx > 0 ? 'right' : 'left';
+        } else {
+          moveDir = dy > 0 ? 'bottom' : 'top';
+        }
+        break;
+      }
+    }
+    
+    if (overlap && moveDir) {
+      const shift = attrDistance;
+      if (moveDir === 'top') attr.y -= shift;
+      else if (moveDir === 'bottom') attr.y += shift;
+      else if (moveDir === 'left') attr.x -= shift;
+      else if (moveDir === 'right') attr.x += shift;
+      
+      resolved.push(attr);
+    }
+  }
+  
+  return resolved;
+}
+
+/**
+ * 解决属性与连接线的交叉冲突
+ * 将交叉的属性沿垂直于连线的方向移动
+ */
+function resolveAttrLineOverlap(shapes, connections, entityPositions, attrDistance = 70) {
+  const attrShapes = shapes.filter(s => s.type === 'ellipse');
+  const resolved = [];
+  
+  // 构建连接线信息
+  const lines = [];
+  for (const conn of connections) {
+    const fromShape = shapes[conn.from];
+    const toShape = shapes[conn.to];
+    if (!fromShape || !toShape) continue;
+    
+    const x1 = fromShape.x + fromShape.w * (conn.style.exitX || 0.5);
+    const y1 = fromShape.y + fromShape.h * (conn.style.exitY || 0.5);
+    const x2 = toShape.x + toShape.w * (conn.style.entryX || 0.5);
+    const y2 = toShape.y + toShape.h * (conn.style.entryY || 0.5);
+    
+    lines.push({ x1, y1, x2, y2 });
+  }
+  
+  for (const attr of attrShapes) {
+    let intersect = false;
+    let moveDir = null;
+    
+    for (const line of lines) {
+      if (lineIntersectsRect(line.x1, line.y1, line.x2, line.y2, attr)) {
+        intersect = true;
+        
+        // 计算连线的方向
+        const dx = line.x2 - line.x1;
+        const dy = line.y2 - line.y1;
+        
+        // 沿垂直于连线的方向移动
+        if (Math.abs(dx) > Math.abs(dy)) {
+          // 水平连线，垂直移动
+          const attrCy = attr.y + attr.h / 2;
+          const lineMidY = (line.y1 + line.y2) / 2;
+          moveDir = attrCy < lineMidY ? 'top' : 'bottom';
+        } else {
+          // 垂直连线，水平移动
+          const attrCx = attr.x + attr.w / 2;
+          const lineMidX = (line.x1 + line.x2) / 2;
+          moveDir = attrCx < lineMidX ? 'left' : 'right';
+        }
+        break;
+      }
+    }
+    
+    if (intersect && moveDir) {
+      const shift = attrDistance;
+      if (moveDir === 'top') attr.y -= shift;
+      else if (moveDir === 'bottom') attr.y += shift;
+      else if (moveDir === 'left') attr.x -= shift;
+      else if (moveDir === 'right') attr.x += shift;
+      
+      resolved.push(attr);
+    }
+  }
+  
+  return resolved;
+}
+
+/**
  * 传统布局（属性 <= 8 时使用）
  */
 function layoutTraditional(entities, relationships, style, canvas, title) {
@@ -894,6 +1076,9 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
   const entityNameToIdx = {};
   entities.forEach((e, i) => { entityNameToIdx[e.name] = i; });
 
+  // 收集所有关系菱形位置，用于后续碰撞检测
+  const rhombusPositions = [];
+
   for (const rel of relationships) {
     const fromIdx = entityNameToIdx[rel.from];
     const toIdx = entityNameToIdx[rel.to];
@@ -921,6 +1106,12 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
       }
     });
     const relShapeIdx = shapes.length - 1;
+
+    // 记录菱形位置用于碰撞检测
+    rhombusPositions.push({
+      x: relX, y: relY, w: relW, h: relH,
+      cx: relCx, cy: relCy
+    });
 
     const connDir = getConnectionDirection(fromPos, toPos);
     let fromExitX, fromExitY, toExitX, toExitY;
@@ -991,6 +1182,15 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     });
     shapeIdx++;
   }
+
+  // === 碰撞检测与解决 ===
+  // 原则：实体属性和线条不能遮挡和交叉
+  
+  // 1. 解决属性与菱形的重叠
+  const attrRhombusResolved = resolveAttrRhombusOverlap(shapes, rhombusPositions, attrDistance);
+  
+  // 2. 解决属性与连接线的交叉
+  const attrLineResolved = resolveAttrLineOverlap(shapes, connections, entityPositions, attrDistance);
 
   // 调整画布大小
   let maxX = 0, maxY = 0;
