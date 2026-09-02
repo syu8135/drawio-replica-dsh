@@ -80,7 +80,7 @@ class DrawioQualityChecker {
       stats: {
         totalShapes: shapes.length,
         textShapes: shapes.filter(s => s.text).length,
-        connectionShapes: shapes.filter(s => s.type === 'edge').length
+        connectionShapes: shapes.filter(s => s.type === 'line').length
       }
     };
   }
@@ -119,19 +119,84 @@ class DrawioQualityChecker {
    */
   parseShapes(content) {
     const shapes = [];
-    const regex = /<mxCell[^>]*value="([^"]*)"[^>]*style="([^"]*)"[^>]*>[\s\S]*?<mxGeometry[^>]*x="([^"]*)"[^>]*y="([^"]*)"[^>]*width="([^"]*)"[^>]*height="([^"]*)"/g;
+    const cellMap = {};
+    
+    // 解析矩形/椭圆（有 width/height）- 使用更精确的正则
+    const rectRegex = /<mxCell([^>]*)>[\s\S]*?<mxGeometry([^>]*)\/?>[\s\S]*?<\/mxCell>/g;
     
     let match;
-    while ((match = regex.exec(content)) !== null) {
-      shapes.push({
-        text: match[1],
-        style: match[2],
-        x: parseFloat(match[3]),
-        y: parseFloat(match[4]),
-        w: parseFloat(match[5]),
-        h: parseFloat(match[6]),
-        type: match[2].includes('edge') ? 'edge' : 'vertex'
-      });
+    while ((match = rectRegex.exec(content)) !== null) {
+      const cellTag = match[1];
+      const geomTag = match[2];
+      
+      // 提取 id, value, style
+      const idMatch = cellTag.match(/id="([^"]*)"/);
+      const valueMatch = cellTag.match(/value="([^"]*)"/);
+      const styleMatch = cellTag.match(/style="([^"]*)"/);
+      
+      // 提取 x, y, width, height
+      const xMatch = geomTag.match(/x="([^"]*)"/);
+      const yMatch = geomTag.match(/y="([^"]*)"/);
+      const wMatch = geomTag.match(/width="([^"]*)"/);
+      const hMatch = geomTag.match(/height="([^"]*)"/);
+      
+      if (!idMatch || !xMatch || !yMatch || !wMatch || !hMatch) continue;
+      
+      // 跳过 edge 类型
+      if (cellTag.includes('edge="1"')) continue;
+      
+      const style = styleMatch ? styleMatch[1] : '';
+      const cell = {
+        id: idMatch[1],
+        text: valueMatch ? valueMatch[1] : '',
+        style: style,
+        x: parseFloat(xMatch[1]),
+        y: parseFloat(yMatch[1]),
+        w: parseFloat(wMatch[1]),
+        h: parseFloat(hMatch[1]),
+        type: style.includes('ellipse') ? 'ellipse' : (style.includes('rhombus') ? 'rhombus' : (style.startsWith('text;') ? 'text' : 'rect'))
+      };
+      shapes.push(cell);
+      cellMap[cell.id] = cell;
+    }
+    
+    // 解析连接线（edge）
+    const edgeRegex = /<mxCell([^>]*)edge="1"([^>]*)>/g;
+    while ((match = edgeRegex.exec(content)) !== null) {
+      const cellTag = match[1] + match[2];
+      const idMatch = cellTag.match(/id="([^"]*)"/);
+      const sourceMatch = cellTag.match(/source="([^"]*)"/);
+      const targetMatch = cellTag.match(/target="([^"]*)"/);
+      const styleMatch = cellTag.match(/style="([^"]*)"/);
+      
+      if (!idMatch || !sourceMatch || !targetMatch) continue;
+      
+      const source = cellMap[sourceMatch[1]];
+      const target = cellMap[targetMatch[1]];
+      
+      if (source && target) {
+        const style = styleMatch ? styleMatch[1] : '';
+        const exitXMatch = style.match(/exitX=([\d.]+)/);
+        const exitYMatch = style.match(/exitY=([\d.]+)/);
+        const entryXMatch = style.match(/entryX=([\d.]+)/);
+        const entryYMatch = style.match(/entryY=([\d.]+)/);
+        
+        const exitX = exitXMatch ? parseFloat(exitXMatch[1]) : 0.5;
+        const exitY = exitYMatch ? parseFloat(exitYMatch[1]) : 0.5;
+        const entryX = entryXMatch ? parseFloat(entryXMatch[1]) : 0.5;
+        const entryY = entryYMatch ? parseFloat(entryYMatch[1]) : 0.5;
+        
+        shapes.push({
+          id: idMatch[1],
+          text: '',
+          style: style,
+          x1: source.x + source.w * exitX,
+          y1: source.y + source.h * exitY,
+          x2: target.x + target.w * entryX,
+          y2: target.y + target.h * entryY,
+          type: 'line'
+        });
+      }
     }
     
     return shapes;
@@ -488,20 +553,41 @@ class DrawioSvgPreview {
     const shapes = [];
     const cellMap = {}; // 存储所有 cell 的坐标
     
-    // 解析矩形/椭圆（有 width/height）
-    const rectRegex = /<mxCell[^>]*id="([^"]*)"[^>]*value="([^"]*)"[^>]*style="([^"]*)"[^>]*>[\s\S]*?<mxGeometry[^>]*x="([^"]*)"[^>]*y="([^"]*)"[^>]*width="([^"]*)"[^>]*height="([^"]*)"/g;
+    // 解析矩形/椭圆（有 width/height）- 使用更精确的正则，不跨越</mxCell>
+    const rectRegex = /<mxCell([^>]*)>[\s\S]*?<mxGeometry([^>]*)\/?>[\s\S]*?<\/mxCell>/g;
     
     let match;
     while ((match = rectRegex.exec(content)) !== null) {
+      const cellTag = match[1];
+      const geomTag = match[2];
+      
+      // 提取 id, value, style
+      const idMatch = cellTag.match(/id="([^"]*)"/);
+      const valueMatch = cellTag.match(/value="([^"]*)"/);
+      const styleMatch = cellTag.match(/style="([^"]*)"/);
+      
+      // 提取 x, y, width, height
+      const xMatch = geomTag.match(/x="([^"]*)"/);
+      const yMatch = geomTag.match(/y="([^"]*)"/);
+      const wMatch = geomTag.match(/width="([^"]*)"/);
+      const hMatch = geomTag.match(/height="([^"]*)"/);
+      
+      if (!idMatch || !xMatch || !yMatch || !wMatch || !hMatch) continue;
+      
+      const style = styleMatch ? styleMatch[1] : '';
+      
+      // 跳过 edge 类型（没有 x/y/width/height 的 geometry）
+      if (cellTag.includes('edge="1"')) continue;
+      
       const cell = {
-        id: match[1],
-        text: match[2],
-        style: match[3],
-        x: parseFloat(match[4]),
-        y: parseFloat(match[5]),
-        w: parseFloat(match[6]),
-        h: parseFloat(match[7]),
-        type: match[3].includes('ellipse') ? 'ellipse' : (match[3].includes('rhombus') ? 'rhombus' : (match[3].startsWith('text;') ? 'text' : (match[3].includes('umlActor') ? 'actor' : 'rect')))
+        id: idMatch[1],
+        text: valueMatch ? valueMatch[1] : '',
+        style: style,
+        x: parseFloat(xMatch[1]),
+        y: parseFloat(yMatch[1]),
+        w: parseFloat(wMatch[1]),
+        h: parseFloat(hMatch[1]),
+        type: style.includes('ellipse') ? 'ellipse' : (style.includes('rhombus') ? 'rhombus' : (style.startsWith('text;') ? 'text' : (style.includes('umlActor') ? 'actor' : 'rect')))
       };
       shapes.push(cell);
       cellMap[cell.id] = cell;

@@ -377,14 +377,25 @@ function drawEntityDetailDiagram(entity, entityX, entityY, style) {
   const entityShapeIdx = 0;
   let shapeIdx = 1;
 
-  // 属性：分布在四条边上
+  // 属性：根据数量智能分布
   const attrs = entity.attributes || [];
   const attrCount = attrs.length;
   if (attrCount === 0) return { shapes, connections };
 
-  // 计算每条边分配的属性数量
-  const dirs = ['top', 'bottom', 'left', 'right'];
-  const perDir = Math.ceil(attrCount / 4);
+  // 智能分布策略：
+  // <= 4 个：全部放上方
+  // 5-8 个：上方和下方
+  // > 8 个：四个方向
+  let dirs = [];
+  if (attrCount <= 4) {
+    dirs = ['top'];
+  } else if (attrCount <= 8) {
+    dirs = ['top', 'bottom'];
+  } else {
+    dirs = ['top', 'bottom', 'left', 'right'];
+  }
+  
+  const perDir = Math.ceil(attrCount / dirs.length);
   const dirAttrs = {};
   dirs.forEach((dir, idx) => {
     const start = idx * perDir;
