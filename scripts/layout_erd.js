@@ -672,32 +672,32 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     entityShapeIdx[i] = shapeIdx;
     shapeIdx++;
 
-    // 属性：根据实体位置分配到朝外方向，避开关系连线方向
+    // 属性：避开关系连线方向，在其他方向均匀分布
     const attrs = entities[i].attributes || [];
     const attrCount = attrs.length;
     
-    // 获取实体在布局中的位置方向
-    const direction = getEntityDirection(i, entityCount);
-    let outwardDirs = getOutwardDirections(direction);
+    // 所有可能的方向
+    const allDirs = ['top', 'bottom', 'left', 'right'];
     
     // 排除有关系连线的方向
     const relationDirs = getRelationDirections(entities[i].name, entities, relationships, positions);
-    outwardDirs = outwardDirs.filter(dir => !relationDirs.includes(dir));
+    let availableDirs = allDirs.filter(dir => !relationDirs.includes(dir));
     
     // 如果排除后没有方向了，使用默认方向
-    if (outwardDirs.length === 0) {
-      outwardDirs = ['top', 'bottom'];
+    if (availableDirs.length === 0) {
+      availableDirs = ['top', 'bottom'];
     }
     
-    const perDir = Math.ceil(attrCount / outwardDirs.length);
+    // 均匀分配到各方向
+    const perDir = Math.ceil(attrCount / availableDirs.length);
     const dirAttrs = {};
-    outwardDirs.forEach((dir, idx) => {
+    availableDirs.forEach((dir, idx) => {
       const start = idx * perDir;
       const end = Math.min(start + perDir, attrCount);
       dirAttrs[dir] = attrs.slice(start, end);
     });
 
-    for (const dir of outwardDirs) {
+    for (const dir of availableDirs) {
       const dirAttrList = dirAttrs[dir];
       if (!dirAttrList || dirAttrList.length === 0) continue;
       const count = dirAttrList.length;
