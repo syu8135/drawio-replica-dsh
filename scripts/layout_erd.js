@@ -882,13 +882,15 @@ function layoutErd(structure) {
     // 纯环形布局
     positions = computeEntityPositions(entityCount, canvas.defaultWidth, relDiagramHeight, entityW, entityH, margin);
   }
-  // 下半部分：实体详细图（每个实体需要的高度）
-  const maxAttrsPerEntity = Math.max(...entities.map(e => (e.attributes || []).length));
-  const detailHeightPerEntity = entityH + 2 * (attrDistance + attrH) + 100; // 实体 + 上下属性 + 间距
-  const detailDiagramHeight = detailHeightPerEntity + 100; // 加间距
+  // 下半部分：实体详细图（每行最多 2 个）
+  const detailCols = 2; // 每行 2 个子图
+  const detailRows = Math.ceil(entityCount / detailCols);
+  const detailWidthPerEntity = (canvas.defaultWidth - 2 * margin) / detailCols;
+  const detailHeightPerEntity = entityH + 2 * (attrDistance + attrH) + 100;
+  const detailDiagramHeight = detailRows * detailHeightPerEntity + (detailRows - 1) * 50;
 
   canvas.defaultWidth = Math.max(canvas.defaultWidth, 1400);
-  canvas.defaultHeight = relDiagramHeight + detailDiagramHeight + 100; // 总高度
+  canvas.defaultHeight = relDiagramHeight + detailDiagramHeight + 100;
 
   const shapes = [];
   const connections = [];
@@ -907,13 +909,14 @@ function layoutErd(structure) {
     style: { strokeColor: '#CCCCCC', strokeWidth: 2, dashed: true }
   });
 
-  // 第二步：绘制每个实体的详细图（下半部分）
+  // 第二步：绘制每个实体的详细图（下半部分，每行最多 2 个）
   const detailStartY = separatorY + 50;
-  const entitySpacing = (canvas.defaultWidth - 2 * margin) / entityCount;
 
   for (let i = 0; i < entityCount; i++) {
-    const entityX = margin + i * entitySpacing + (entitySpacing - entityW) / 2;
-    const entityY = detailStartY + (detailHeightPerEntity - entityH) / 2;
+    const row = Math.floor(i / detailCols);
+    const col = i % detailCols;
+    const entityX = margin + col * detailWidthPerEntity + (detailWidthPerEntity - entityW) / 2;
+    const entityY = detailStartY + row * (detailHeightPerEntity + 50) + (detailHeightPerEntity - entityH) / 2;
     
     const detailResult = drawEntityDetailDiagram(entities[i], entityX, entityY, style);
     
