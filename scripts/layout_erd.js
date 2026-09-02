@@ -301,6 +301,130 @@ function reorderEntitiesForRing(entities, relationships) {
 }
 
 /**
+ * 生成数组的所有排列（Heap 算法）
+ */
+function generatePermutations(arr) {
+  const result = [];
+  const n = arr.length;
+  const c = new Array(n).fill(0);
+  result.push([...arr]);
+  let i = 0;
+  while (i < n) {
+    if (c[i] < i) {
+      if (i % 2 === 0) {
+        [arr[0], arr[i]] = [arr[i], arr[0]];
+      } else {
+        [arr[c[i]], arr[i]] = [arr[i], arr[c[i]]];
+      }
+      result.push([...arr]);
+      c[i]++;
+      i = 0;
+    } else {
+      c[i] = 0;
+      i++;
+    }
+  }
+  return result;
+}
+
+/**
+ * 检测枢纽实体：关系数 ≥3 且 ≥ 总关系数一半
+ * 返回枢纽实体索引，无枢纽返回 -1
+ */
+function detectHubEntity(entities, relationships) {
+  if (relationships.length === 0) return -1;
+  let maxIdx = -1, maxDeg = 0;
+  entities.forEach((e, i) => {
+    const deg = relationships.filter(r => r.from === e.name || r.to === e.name).length;
+    if (deg > maxDeg) { maxDeg = deg; maxIdx = i; }
+  });
+  return (maxDeg >= 3 && maxDeg >= Math.ceil(relationships.length / 2)) ? maxIdx : -1;
+}
+
+/**
+ * 枢纽辐射布局：枢纽在圆心，辐条围环
+ * 辐条按辐条间关系贪心排序（相关辐条相邻，环边不交叉；半径线天然不交叉）
+ */
+function computeHubRadialPositions(entities, relationships, hubIdx, canvasW, canvasH, entityW, entityH, margin) {
+  const centerX = canvasW / 2;
+  const centerY = canvasH / 2;
+  const positions = new Array(entities.length);
+  positions[hubIdx] = { x: centerX - entityW / 2, y: centerY - entityH / 2 };
+
+  const spokeIdxs = entities.map((e, i) => i).filter(i => i !== hubIdx);
+  const hasEdge = (a, b) =>
+    relationships.some(r => (r.from === a && r.to === b) || (r.from === b && r.to === a));
+
+  // 贪心排序辐条：从辐条间关系最多的开始，每次选与已放置辐条连接最多的
+  let start = spokeIdxs[0], startDeg = -1;
+  for (const i of spokeIdxs) {
+    const d = spokeIdxs.filter(j => j !== i && hasEdge(entities[i].name, entities[j].name)).length;
+    if (d > startDeg) { startDeg = d; start = i; }
+  }
+  let ordered = [start];
+  const used = new Set([start]);
+  while (ordered.length < spokeIdxs.length) {
+    const last = ordered[ordered.length - 1];
+    let pick = -1, pickConn = -1, pickConnLast = 0;
+    for (const i of spokeIdxs) {
+      if (used.has(i)) continue;
+      let conn = 0;
+      for (const j of ordered) {
+        if (hasEdge(entities[i].name, entities[j].name)) conn++;
+      }
+      const connLast = hasEdge(entities[i].name, entities[last].name) ? 1 : 0;
+      if (conn > pickConn || (conn === pickConn && connLast > pickConnLast)) {
+        pick = i; pickConn = conn; pickConnLast = connLast;
+      }
+    }
+    ordered.push(pick);
+    used.add(pick);
+  }
+
+  // 排列优化：对 ≤6 辐条枚举所有排列，选环上相邻边最多的（避免对径点有边导致菱形与枢纽重叠）
+  if (ordered.length <= 6) {
+    const permutations = generatePermutations(ordered);
+    let bestPerm = ordered, bestAdj = -1;
+    for (const perm of permutations) {
+      let adj = 0;
+      for (let i = 0; i < perm.length; i++) {
+        const a = perm[i], b = perm[(i + 1) % perm.length];
+        if (hasEdge(entities[a].name, entities[b].name)) adj++;
+      }
+      if (adj > bestAdj) { bestAdj = adj; bestPerm = perm; }
+    }
+    ordered = bestPerm;
+  } else {
+    // 辐条太多时，用循环移位近似
+    let bestOrder = [...ordered], bestAdj = -1;
+    for (let shift = 0; shift < ordered.length; shift++) {
+      const shifted = [...ordered.slice(shift), ...ordered.slice(0, shift)];
+      let adj = 0;
+      for (let i = 0; i < shifted.length; i++) {
+        const a = shifted[i], b = shifted[(i + 1) % shifted.length];
+        if (hasEdge(entities[a].name, entities[b].name)) adj++;
+      }
+      if (adj > bestAdj) { bestAdj = adj; bestOrder = shifted; }
+    }
+    ordered = bestOrder;
+  }
+
+  // 辐条均匀分布在圆周上（从顶部开始顺时针）
+  const radius = Math.min(
+    (canvasW - 2 * margin - entityW) / 2 * 0.9,
+    (canvasH - 2 * margin - entityH) / 2 * 0.9
+  );
+  ordered.forEach((idx, k) => {
+    const angle = (2 * Math.PI / ordered.length) * k - Math.PI / 2;
+    positions[idx] = {
+      x: centerX + radius * Math.cos(angle) - entityW / 2,
+      y: centerY + radius * Math.sin(angle) - entityH / 2
+    };
+  });
+  return positions;
+}
+
+/**
  * 获取实体在布局中的方向标识
  * 用于确定属性分布的朝外方向
  */
@@ -747,6 +871,17 @@ function layoutErd(structure) {
   
   // 上半部分：实体关系图（根据实体数量调整高度，不绘制属性所以空间加倍）
   const relDiagramHeight = entityCount <= 3 ? 800 : (entityCount <= 5 ? 1200 : 1500);
+  
+  // 检测枢纽实体，决定使用辐射式还是纯环形
+  const hubIdx = detectHubEntity(entities, relationships);
+  let positions;
+  if (hubIdx >= 0) {
+    // 枢纽辐射布局：枢纽在圆心，辐条围环
+    positions = computeHubRadialPositions(entities, relationships, hubIdx, canvas.defaultWidth, relDiagramHeight, entityW, entityH, margin);
+  } else {
+    // 纯环形布局
+    positions = computeEntityPositions(entityCount, canvas.defaultWidth, relDiagramHeight, entityW, entityH, margin);
+  }
   // 下半部分：实体详细图（每个实体需要的高度）
   const maxAttrsPerEntity = Math.max(...entities.map(e => (e.attributes || []).length));
   const detailHeightPerEntity = entityH + 2 * (attrDistance + attrH) + 100; // 实体 + 上下属性 + 间距
@@ -759,7 +894,6 @@ function layoutErd(structure) {
   const connections = [];
 
   // 第一步：绘制实体关系图（上半部分）
-  const positions = computeEntityPositions(entityCount, canvas.defaultWidth, relDiagramHeight, entityW, entityH, margin);
   const relResult = drawRelationshipDiagram(entities, relationships, positions, style, 0);
   shapes.push(...relResult.shapes);
   connections.push(...relResult.connections);
