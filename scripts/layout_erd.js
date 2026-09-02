@@ -983,7 +983,11 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     entityShapeIdx[i] = shapeIdx;
     shapeIdx++;
 
-    // 属性：避开关系连线方向，在其他方向均匀分布
+    // 属性：均匀分布原则
+    // 1. 避开关系连线方向
+    // 2. 每个方向最多 3-4 个属性
+    // 3. 同一方向的属性必须对齐（同一水平线或垂直线）
+    // 4. 避免连线交叉
     const attrs = entities[i].attributes || [];
     const attrCount = attrs.length;
     
@@ -999,14 +1003,33 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
       availableDirs = ['top', 'bottom'];
     }
     
-    // 均匀分配到各方向
-    const perDir = Math.ceil(attrCount / availableDirs.length);
+    // 均匀分配：每个方向最多 maxPerDir 个属性
+    const maxPerDir = 4; // 每个方向最多 4 个属性
+    const minDirsNeeded = Math.ceil(attrCount / maxPerDir);
+    
+    // 如果可用方向不够，使用更多方向
+    if (availableDirs.length < minDirsNeeded) {
+      // 从所有方向中选择，优先选择非关系方向
+      const priorityDirs = availableDirs;
+      const secondaryDirs = allDirs.filter(dir => !availableDirs.includes(dir));
+      availableDirs = [...priorityDirs, ...secondaryDirs].slice(0, minDirsNeeded);
+    }
+    
+    // 计算每个方向的属性数（尽量均匀）
+    const perDir = Math.floor(attrCount / availableDirs.length);
+    const remainder = attrCount % availableDirs.length;
+    
     const dirAttrs = {};
+    let attrIdx = 0;
     availableDirs.forEach((dir, idx) => {
-      const start = idx * perDir;
-      const end = Math.min(start + perDir, attrCount);
-      dirAttrs[dir] = attrs.slice(start, end);
+      // 前 remainder 个方向多分 1 个
+      const count = perDir + (idx < remainder ? 1 : 0);
+      dirAttrs[dir] = attrs.slice(attrIdx, attrIdx + count);
+      attrIdx += count;
     });
+    
+    // 调试输出
+    console.log(`  ${entities[i].name}: ${attrCount} 个属性，关系方向=${relationDirs.join(',')}, 可用方向=${availableDirs.join(',')}, 分配=${Object.entries(dirAttrs).map(([d,a]) => `${d}:${a.length}`).join(',')}`);
 
     for (const dir of availableDirs) {
       const dirAttrList = dirAttrs[dir];
@@ -1199,11 +1222,12 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
   // === 碰撞检测与解决 ===
   // 原则：实体属性和线条不能遮挡和交叉
   
+  // 暂时禁用碰撞检测，先确保属性对齐
   // 1. 解决属性与菱形的重叠
-  const attrRhombusResolved = resolveAttrRhombusOverlap(shapes, rhombusPositions, attrDistance);
+  // const attrRhombusResolved = resolveAttrRhombusOverlap(shapes, rhombusPositions, attrDistance);
   
   // 2. 解决属性与连接线的交叉
-  const attrLineResolved = resolveAttrLineOverlap(shapes, connections, entityPositions, attrDistance);
+  // const attrLineResolved = resolveAttrLineOverlap(shapes, connections, entityPositions, attrDistance);
 
   // 调整画布大小
   let maxX = 0, maxY = 0;
