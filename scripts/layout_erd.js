@@ -693,7 +693,7 @@ function drawEntityDetailDiagram(entity, entityX, entityY, style) {
   const connections = [];
   const entityW = style.spacing.entityW || 120;
   const entityH = style.spacing.entityH || 60;
-  const attrW = style.spacing.attrW || 70;
+  const attrW = style.spacing.attrW || 110;
   const attrH = style.spacing.attrH || 32;
   const attrGap = style.spacing.attrGap || 12;
   const attrDistance = style.spacing.attrDistance || 70;
@@ -849,7 +849,7 @@ function layoutErd(structure) {
 
   const entityW = style.spacing.entityW || 120;
   const entityH = style.spacing.entityH || 60;
-  const attrW = style.spacing.attrW || 70;
+  const attrW = style.spacing.attrW || 110;
   const attrH = style.spacing.attrH || 32;
   const attrGap = style.spacing.attrGap || 12;
   const attrDistance = style.spacing.attrDistance || 70;
@@ -1131,7 +1131,7 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
   const connections = [];
   const entityW = style.spacing.entityW || 120;
   const entityH = style.spacing.entityH || 60;
-  const attrW = style.spacing.attrW || 70;
+  const attrW = style.spacing.attrW || 110;
   const attrH = style.spacing.attrH || 32;
   const relW = style.spacing.relW || 100;
   const relH = style.spacing.relH || 60;
