@@ -662,7 +662,7 @@ function layoutErd(structure) {
     parsed = { entities: [], relationships: [] };
   }
 
-  const entities = parsed.entities;
+  let entities = parsed.entities;
   const relationships = parsed.relationships;
   const entityCount = entities.length;
 
