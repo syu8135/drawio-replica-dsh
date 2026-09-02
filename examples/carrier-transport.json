@@ -1,0 +1,81 @@
+{
+  "page": {
+    "name": "载流子输运微观机制",
+    "width": 1672,
+    "height": 958
+  },
+  "shapes": [
+    {"type":"text","x":400,"y":15,"w":400,"h":35,"text":"载流子输运微观机制","style":{"fontSize":18,"bold":true,"fontColor":"#000000","align":1}},
+
+    {"type":"parallelogram","x":100,"y":65,"w":900,"h":110,"text":"","style":{"fillColor":"#F8E8E8","strokeColor":"#C08080","strokeWidth":1.5}},
+    {"type":"text","x":960,"y":100,"w":100,"h":30,"text":"Drift","style":{"fontSize":16,"bold":true,"fontColor":"#000000"}},
+
+    {"type":"rect","x":130,"y":80,"w":80,"h":30,"text":"漂移","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":12,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"rect","x":130,"y":115,"w":80,"h":30,"text":"扩散","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":12,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"rect","x":130,"y":150,"w":80,"h":30,"text":"散射","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":12,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"roundedrect","x":240,"y":80,"w":100,"h":30,"text":"漂移速度","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":10,"align":1}},
+    {"type":"roundedrect","x":350,"y":80,"w":90,"h":30,"text":"迁移率","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":10,"align":1}},
+    {"type":"roundedrect","x":450,"y":80,"w":100,"h":30,"text":"浓度梯度","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":10,"align":1}},
+
+    {"type":"rect","x":240,"y":125,"w":320,"h":30,"text":"浓度梯度（dn/dx）引起的定向运动","style":{"fillColor":"#D0E8F0","strokeColor":"#A0C0D0","fontSize":10,"align":1}},
+
+    {"type":"parallelogram","x":100,"y":195,"w":900,"h":130,"text":"","style":{"fillColor":"#F0E0E0","strokeColor":"#C08080","strokeWidth":1.5}},
+    {"type":"text","x":960,"y":240,"w":100,"h":30,"text":"Carrier","style":{"fontSize":16,"bold":true,"fontColor":"#000000"}},
+    {"type":"text","x":1090,"y":240,"w":100,"h":30,"text":"微观机制","style":{"fontSize":11,"fontColor":"#000000"}},
+
+    {"type":"text","x":70,"y":245,"w":50,"h":25,"text":"微观","style":{"fontSize":11,"fontColor":"#000000"}},
+
+    {"type":"rect","x":180,"y":210,"w":90,"h":30,"text":"晶格振动","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":10,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"rect","x":180,"y":270,"w":90,"h":30,"text":"电离杂质","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":10,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"text","x":300,"y":210,"w":280,"h":25,"text":"平均自由时间（τ）和平均自由程（l）","style":{"fontSize":10,"bold":true,"fontColor":"#8B0000","align":1}},
+
+    {"type":"diamond","x":340,"y":275,"w":70,"h":40,"text":"声子散射","style":{"fillColor":"#F0F0F0","strokeColor":"#C0C0C0","fontSize":8,"align":1}},
+    {"type":"diamond","x":420,"y":275,"w":70,"h":40,"text":"速度饱和","style":{"fillColor":"#F0F0F0","strokeColor":"#C0C0C0","fontSize":8,"align":1}},
+    {"type":"diamond","x":500,"y":275,"w":70,"h":40,"text":"电子效应","style":{"fillColor":"#F0F0F0","strokeColor":"#C0C0C0","fontSize":8,"align":1}},
+    {"type":"diamond","x":580,"y":275,"w":70,"h":40,"text":"弹道输运","style":{"fillColor":"#F0F0F0","strokeColor":"#C0C0C0","fontSize":8,"align":1}},
+
+    {"type":"parallelogram","x":100,"y":345,"w":900,"h":140,"text":"","style":{"fillColor":"#F0E0E0","strokeColor":"#C08080","strokeWidth":1.5}},
+    {"type":"text","x":960,"y":395,"w":100,"h":30,"text":"Alloy","style":{"fontSize":16,"bold":true,"fontColor":"#000000"}},
+    {"type":"text","x":1090,"y":395,"w":100,"h":30,"text":"热电子效应","style":{"fontSize":11,"fontColor":"#000000"}},
+
+    {"type":"text","x":70,"y":400,"w":50,"h":25,"text":"宏观","style":{"fontSize":11,"fontColor":"#000000"}},
+
+    {"type":"rect","x":180,"y":360,"w":90,"h":28,"text":"内部激励","style":{"fillColor":"#4169E1","strokeColor":"#2050C0","fontSize":9,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"rect","x":280,"y":360,"w":90,"h":28,"text":"外部激励","style":{"fillColor":"#4169E1","strokeColor":"#2050C0","fontSize":9,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"rect","x":180,"y":395,"w":90,"h":25,"text":"统计平均","style":{"fillColor":"#F0F0F0","strokeColor":"#C0C0C0","fontSize":8,"align":1}},
+    {"type":"rect","x":280,"y":395,"w":90,"h":25,"text":"电流密度","style":{"fillColor":"#F0F0F0","strokeColor":"#C0C0C0","fontSize":8,"align":1}},
+    {"type":"rect","x":180,"y":425,"w":90,"h":25,"text":"宏观表现","style":{"fillColor":"#F0F0F0","strokeColor":"#C0C0C0","fontSize":8,"align":1}},
+    {"type":"rect","x":280,"y":425,"w":90,"h":25,"text":"定向运动","style":{"fillColor":"#F0F0F0","strokeColor":"#C0C0C0","fontSize":8,"align":1}},
+
+    {"type":"rect","x":450,"y":360,"w":110,"h":28,"text":"微观到宏观","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":9,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"text","x":500,"y":395,"w":60,"h":25,"text":"电子","style":{"fontSize":9,"fontColor":"#8B0000","align":1}},
+    {"type":"oval","x":450,"y":425,"w":70,"h":28,"text":"总电流","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":9,"align":1}},
+    {"type":"oval","x":530,"y":425,"w":90,"h":28,"text":"扩散电流","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":9,"align":1}},
+
+    {"type":"parallelogram","x":100,"y":505,"w":900,"h":110,"text":"","style":{"fillColor":"#F8E8E8","strokeColor":"#C08080","strokeWidth":1.5}},
+    {"type":"text","x":960,"y":540,"w":120,"h":30,"text":"Ballistic","style":{"fontSize":16,"bold":true,"fontColor":"#000000"}},
+
+    {"type":"text","x":70,"y":545,"w":50,"h":25,"text":"趋势","style":{"fontSize":11,"fontColor":"#000000"}},
+
+    {"type":"diamond","x":250,"y":530,"w":130,"h":65,"text":"平均漂移速度","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":11,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"diamond","x":420,"y":530,"w":130,"h":65,"text":"提供定向运动","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":11,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"block-arrow","x":1150,"y":60,"w":180,"h":100,"text":"重要输运现象","style":{"fillColor":"#8B0000","strokeColor":"#600000","fontSize":13,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"rect","x":1130,"y":220,"w":110,"h":70,"text":"物理图像","style":{"fillColor":"#FFFFFF","strokeColor":"#000000","strokeWidth":1.5,"fontSize":11,"align":1}},
+    {"type":"rect","x":1250,"y":220,"w":110,"h":70,"text":"浓度梯度","style":{"fillColor":"#FFFFFF","strokeColor":"#000000","strokeWidth":1.5,"fontSize":11,"align":1}},
+
+    {"type":"rect","x":1130,"y":320,"w":55,"h":140,"text":"流子波动性","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":9,"align":1}},
+    {"type":"rect","x":1195,"y":320,"w":55,"h":140,"text":"多种样散射","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":9,"align":1}},
+    {"type":"rect","x":1260,"y":320,"w":55,"h":140,"text":"非平衡函数","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":9,"align":1}},
+    {"type":"rect","x":1325,"y":320,"w":55,"h":140,"text":"非定向运动","style":{"fillColor":"#E8F4F8","strokeColor":"#B0D0E0","fontSize":9,"align":1}}
+  ],
+  "connections": [
+    {"from":21,"to":42,"style":{"endArrow":"classic","strokeColor":"#4169E1","strokeWidth":4}},
+    {"from":33,"to":42,"style":{"endArrow":"classic","strokeColor":"#4169E1","strokeWidth":4}},
+    {"from":42,"to":43,"style":{"endArrow":"classic","strokeColor":"#87CEEB","strokeWidth":5}},
+    {"from":44,"to":43,"style":{"endArrow":"classic","strokeColor":"#87CEEB","strokeWidth":5}}
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "template": "cycle-segmented",
+  "title": "产教融合实战基座",
+  "center": {
+    "text": "产教融合实战基座",
+    "subtitle": "海浪智学/真实场景/双轨评测"
+  },
+  "rings": [
+    {
+      "radius": 400,
+      "labels": [
+        {"text": "学", "angle": -135, "bold": true, "style": {"fontSize": 24}},
+        {"text": "评", "angle": -45, "bold": true, "style": {"fontSize": 24}},
+        {"text": "练", "angle": 135, "bold": true, "style": {"fontSize": 24}},
+        {"text": "馈", "angle": 45, "bold": true, "style": {"fontSize": 24}}
+      ]
+    },
+    {
+      "radius": 300,
+      "labels": [
+        {"text": "智能采集", "angle": -90, "bold": true, "style": {"fontSize": 16}},
+        {"text": "合规固本", "angle": 0, "bold": true, "style": {"fontSize": 16, "rotation": 90}},
+        {"text": "产教融链", "angle": 180, "bold": true, "style": {"fontSize": 16, "rotation": -90}}
+      ]
+    },
+    {
+      "radius": 200,
+      "labels": [
+        {"text": "图谱驱动（个性化学习）", "angle": -90, "bold": true, "style": {"fontSize": 14}},
+        {"text": "人机协同（工程化教学）", "angle": 90, "bold": true, "style": {"fontSize": 14}}
+      ]
+    }
+  ]
+}

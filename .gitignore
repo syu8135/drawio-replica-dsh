@@ -1,0 +1,11 @@
+# Output files (generated)
+output/*.drawio
+output/*.svg
+output/*.png
+
+# WPS shortcuts
+*.lnk
+
+# OS files
+.DS_Store
+Thumbs.db

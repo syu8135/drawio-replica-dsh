@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-08-31T05:49:54.250Z" agent="drawio-replica-dsh" version="24.0.0" type="device">
+  <diagram name="载流子输运微观机制" id="diagram_1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="cell_2" value="载流子输运微观机制" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=18;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="500" y="50" width="500" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_3" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#F8E8E8;strokeColor=#C08080;strokeWidth=1.5;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="50" y="100" width="975" height="120" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_4" value="Drift" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=16;fontColor=#000000;fontStyle=1" vertex="1" parent="1">
+        <mxGeometry x="1040" y="145" width="150" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_5" value="漂移" style="fillColor=#8B0000;strokeColor=#600000;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="80" y="115" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_6" value="扩散" style="fillColor=#8B0000;strokeColor=#600000;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="80" y="150" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_7" value="散射" style="fillColor=#8B0000;strokeColor=#600000;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="80" y="185" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_8" value="漂移速度" style="rounded=1;fillColor=#E8F4F8;strokeColor=#B0D0E0;strokeWidth=0.8;fontSize=10;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="115" width="100" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_9" value="迁移率" style="rounded=1;fillColor=#E8F4F8;strokeColor=#B0D0E0;strokeWidth=0.8;fontSize=10;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="290" y="115" width="100" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_10" value="浓度梯度" style="rounded=1;fillColor=#E8F4F8;strokeColor=#B0D0E0;strokeWidth=0.8;fontSize=10;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="400" y="115" width="100" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_11" value="浓度梯度（dn/dx）引起的定向运动" style="fillColor=#000000;strokeColor=#A0C0D0;strokeWidth=0.8;fontSize=9;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="155" width="400" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_12" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#F0E0E0;strokeColor=#C08080;strokeWidth=1.5;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="50" y="245" width="975" height="120" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_13" value="Carrier" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=16;fontColor=#000000;fontStyle=1" vertex="1" parent="1">
+        <mxGeometry x="1040" y="290" width="150" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_14" value="微观机制" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="1040" y="320" width="150" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_15" value="微观" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="10" y="293" width="50" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_16" value="晶格振动" style="fillColor=#8B0000;strokeColor=#600000;strokeWidth=1;fontSize=10;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="80" y="260" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_17" value="电离杂质" style="fillColor=#8B0000;strokeColor=#600000;strokeWidth=1;fontSize=10;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="80" y="295" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_18" value="平均自由时间（τ）和平均自由程（l）" style="fillColor=#000000;strokeColor=#A0C0D0;strokeWidth=0.8;fontSize=9;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="300" width="400" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_19" value="声子散射" style="rhombus;fillColor=#F0F0F0;strokeColor=#C0C0C0;strokeWidth=0.8;fontSize=8;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="250" y="310" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_20" value="速度饱和" style="rhombus;fillColor=#F0F0F0;strokeColor=#C0C0C0;strokeWidth=0.8;fontSize=8;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="330" y="310" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_21" value="电子效应" style="rhombus;fillColor=#F0F0F0;strokeColor=#C0C0C0;strokeWidth=0.8;fontSize=8;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="410" y="310" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_22" value="弹道输运" style="rhombus;fillColor=#F0F0F0;strokeColor=#C0C0C0;strokeWidth=0.8;fontSize=8;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="490" y="310" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_23" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#F0E0E0;strokeColor=#C08080;strokeWidth=1.5;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="50" y="390" width="975" height="120" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_24" value="Alloy" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=16;fontColor=#000000;fontStyle=1" vertex="1" parent="1">
+        <mxGeometry x="1040" y="435" width="150" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_25" value="热电子效应" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="1040" y="465" width="150" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_26" value="宏观" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="10" y="438" width="50" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_27" value="内部激励" style="fillColor=#4169E1;strokeColor=#600000;strokeWidth=1;fontSize=9;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="80" y="405" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_28" value="外部激励" style="fillColor=#4169E1;strokeColor=#600000;strokeWidth=1;fontSize=9;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="80" y="440" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_29" value="统计平均" style="fillColor=#F0F0F0;strokeColor=#B0D0E0;strokeWidth=0.8;fontSize=8;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="405" width="100" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_30" value="电流密度" style="fillColor=#F0F0F0;strokeColor=#B0D0E0;strokeWidth=0.8;fontSize=8;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="290" y="405" width="100" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_31" value="宏观表现" style="fillColor=#F0F0F0;strokeColor=#B0D0E0;strokeWidth=0.8;fontSize=8;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="400" y="405" width="100" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_32" value="定向运动" style="fillColor=#F0F0F0;strokeColor=#B0D0E0;strokeWidth=0.8;fontSize=8;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="510" y="405" width="100" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_33" value="微观到宏观" style="fillColor=#000000;strokeColor=#A0C0D0;strokeWidth=0.8;fontSize=9;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="445" width="400" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_34" value="总电流" style="ellipse;fillColor=#E8F4F8;strokeColor=#C0C0C0;strokeWidth=0.8;fontSize=9;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="250" y="455" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_35" value="扩散电流" style="ellipse;fillColor=#E8F4F8;strokeColor=#C0C0C0;strokeWidth=0.8;fontSize=9;fontColor=#000000;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="330" y="455" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_36" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#F8E8E8;strokeColor=#C08080;strokeWidth=1.5;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="50" y="535" width="975" height="120" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_37" value="Ballistic" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=16;fontColor=#000000;fontStyle=1" vertex="1" parent="1">
+        <mxGeometry x="1040" y="580" width="150" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_38" value="趋势" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="10" y="583" width="50" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_39" value="平均漂移速度" style="rhombus;fillColor=#8B0000;strokeColor=#C0C0C0;strokeWidth=0.8;fontSize=11;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="250" y="600" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_40" value="提供定向运动" style="rhombus;fillColor=#8B0000;strokeColor=#C0C0C0;strokeWidth=0.8;fontSize=11;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="330" y="600" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_41" value="重要输运现象" style="shape=blockArrow;whiteSpace=wrap;html=1;;fillColor=#000000;strokeColor=#600000;fontSize=13;fontColor=#000000;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1260" y="100" width="220" height="80" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_42" value="物理图像" style="fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=10;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1260" y="200" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_43" value="浓度梯度" style="fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=10;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1370" y="200" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_44" value="流子波动性" style="fillColor=#000000;strokeColor=#B0D0E0;fontSize=9;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1260" y="280" width="50" height="120" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_45" value="多种样散射" style="fillColor=#000000;strokeColor=#B0D0E0;fontSize=9;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1320" y="280" width="50" height="120" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_46" value="非平衡函数" style="fillColor=#000000;strokeColor=#B0D0E0;fontSize=9;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1380" y="280" width="50" height="120" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_47" value="非定向运动" style="fillColor=#000000;strokeColor=#B0D0E0;fontSize=9;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1440" y="280" width="50" height="120" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

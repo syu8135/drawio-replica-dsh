@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <rect width="100%" height="100%" fill="white"/>
+  <ellipse cx="500" cy="500" rx="440" ry="440" 
+    fill="#F4A460" stroke="#FFFFFF" stroke-width="2"/>
+  <ellipse cx="500" cy="500" rx="360" ry="360" 
+    fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+  <rect x="157.15728752538104" y="202.15728752538098" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="217.15728752538104" y="217.15728752538098" 
+    font-size="24" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">学</text>
+  <rect x="722.842712474619" y="202.15728752538104" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="782.842712474619" y="217.15728752538104" 
+    font-size="24" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">评</text>
+  <rect x="157.15728752538104" y="767.842712474619" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="217.15728752538104" y="782.842712474619" 
+    font-size="24" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">练</text>
+  <rect x="722.842712474619" y="767.842712474619" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="782.842712474619" y="782.842712474619" 
+    font-size="24" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">馈</text>
+  <ellipse cx="500" cy="500" rx="340" ry="340" 
+    fill="#FFD700" stroke="#FFFFFF" stroke-width="2"/>
+  <ellipse cx="500" cy="500" rx="260" ry="260" 
+    fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+  <rect x="440" y="185" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="500" y="200" 
+    font-size="16" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">智能采集</text>
+  <rect x="740" y="485" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="800" y="500" 
+    font-size="16" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">合规固本</text>
+  <rect x="140" y="485.00000000000006" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="200" y="500.00000000000006" 
+    font-size="16" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">产教融链</text>
+  <ellipse cx="500" cy="500" rx="240" ry="240" 
+    fill="#DC143C" stroke="#FFFFFF" stroke-width="2"/>
+  <ellipse cx="500" cy="500" rx="160" ry="160" 
+    fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+  <rect x="440" y="285" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="500" y="300" 
+    font-size="14" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">图谱驱动（个性化学习）</text>
+  <rect x="440" y="685" width="120" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="500" y="700" 
+    font-size="14" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">人机协同（工程化教学）</text>
+  <ellipse cx="500" cy="500" rx="100" ry="100" 
+    fill="#000000" stroke="#FFFFFF" stroke-width="2"/>
+  <rect x="420" y="470" width="160" height="40" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="500" y="490" 
+    font-size="20" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">产教融合实战基座</text>
+  <rect x="400" y="520" width="200" height="30" 
+    fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="500" y="535" 
+    font-size="12" fill="#000000" 
+    text-anchor="middle" dominant-baseline="central">海浪智学/真实场景/双轨评测</text>
+</svg>

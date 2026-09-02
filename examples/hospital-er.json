@@ -1,0 +1,54 @@
+{
+  "page": {
+    "name": "医院ER图",
+    "width": 1200,
+    "height": 900
+  },
+  "shapes": [
+    {"type":"rect","x":180,"y":170,"w":140,"h":60,"text":"病房","style":{"strokeWidth":1.5,"bold":true,"fontSize":12}},
+    {"type":"rect","x":720,"y":170,"w":140,"h":60,"text":"科室","style":{"strokeWidth":1.5,"bold":true,"fontSize":12}},
+    {"type":"rect","x":180,"y":560,"w":140,"h":60,"text":"病人","style":{"strokeWidth":1.5,"bold":true,"fontSize":12}},
+    {"type":"rect","x":720,"y":560,"w":140,"h":60,"text":"医生","style":{"strokeWidth":1.5,"bold":true,"fontSize":12}},
+
+    {"type":"diamond","x":485,"y":180,"w":70,"h":40,"text":"组成","style":{"strokeWidth":1.5,"bold":true,"fontSize":11}},
+    {"type":"diamond","x":250,"y":370,"w":70,"h":40,"text":"入住","style":{"strokeWidth":1.5,"bold":true,"fontSize":11}},
+    {"type":"diamond","x":790,"y":370,"w":70,"h":40,"text":"从属","style":{"strokeWidth":1.5,"bold":true,"fontSize":11}},
+    {"type":"diamond","x":520,"y":590,"w":70,"h":40,"text":"诊治","style":{"strokeWidth":1.5,"bold":true,"fontSize":11}},
+
+    {"type":"oval","x":100,"y":50,"w":100,"h":60,"text":"病房号","style":{"fontSize":10}},
+    {"type":"oval","x":230,"y":50,"w":100,"h":60,"text":"床位号","style":{"fontSize":10}},
+    {"type":"oval","x":580,"y":50,"w":100,"h":60,"text":"科名","style":{"fontSize":10}},
+    {"type":"oval","x":710,"y":40,"w":100,"h":70,"text":"科地址","style":{"fontSize":10}},
+    {"type":"oval","x":840,"y":50,"w":100,"h":60,"text":"科电话","style":{"fontSize":10}},
+    {"type":"oval","x":60,"y":680,"w":100,"h":60,"text":"病历号","style":{"fontSize":10}},
+    {"type":"oval","x":190,"y":680,"w":100,"h":60,"text":"姓名","style":{"fontSize":10}},
+    {"type":"oval","x":320,"y":680,"w":100,"h":60,"text":"性别","style":{"fontSize":10}},
+    {"type":"oval","x":580,"y":680,"w":100,"h":60,"text":"工作证号","style":{"fontSize":10}},
+    {"type":"oval","x":710,"y":680,"w":100,"h":60,"text":"姓名","style":{"fontSize":10}},
+    {"type":"oval","x":840,"y":680,"w":100,"h":60,"text":"职称","style":{"fontSize":10}},
+    {"type":"oval","x":970,"y":680,"w":100,"h":60,"text":"年龄","style":{"fontSize":10}}
+  ],
+  "connections": [
+    {"from":0,"to":4,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":4,"to":1,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":0,"to":5,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":5,"to":2,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":1,"to":6,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":6,"to":3,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":2,"to":7,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":7,"to":3,"style":{"endArrow":"none","strokeWidth":1}},
+
+    {"from":0,"to":8,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":0,"to":9,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":1,"to":10,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":1,"to":11,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":1,"to":12,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":2,"to":13,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":2,"to":14,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":2,"to":15,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":3,"to":16,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":3,"to":17,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":3,"to":18,"style":{"endArrow":"none","strokeWidth":1}},
+    {"from":3,"to":19,"style":{"endArrow":"none","strokeWidth":1}}
+  ]
+}

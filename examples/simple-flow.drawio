@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-08-31T02:47:14.662Z" agent="drawio-replica-dsh" version="24.0.0" type="device">
+  <diagram name="简单流程图" id="diagram_1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="cell_2" value="开始" style="ellipse;fillColor=#C8FFC8;strokeColor=#232323;strokeWidth=1;fontSize=12;fontColor=#282828;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="220" y="20" width="120" height="50" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_3" value="处理步骤" style="fillColor=#C8DCFF;strokeColor=#232323;strokeWidth=1;fontSize=12;fontColor=#282828;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="120" width="200" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_4" value="判断" style="rhombus;fillColor=#FFFFC8;strokeColor=#232323;strokeWidth=1;fontSize=11;fontColor=#282828;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="220" y="220" width="60" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_5" value="执行操作" style="fillColor=#FFC8C8;strokeColor=#232323;strokeWidth=1;fontSize=12;fontColor=#282828;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="310" width="200" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_6" value="结束" style="ellipse;fillColor=#FFC8C8;strokeColor=#232323;strokeWidth=1;fontSize=12;fontColor=#282828;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="220" y="410" width="120" height="50" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_7" value="" style="endArrow=classic;strokeColor=#646464;strokeWidth=1.5" edge="1" source="cell_2" target="cell_3" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_8" value="" style="endArrow=classic;strokeColor=#646464;strokeWidth=1.5" edge="1" source="cell_3" target="cell_4" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_9" value="" style="endArrow=classic;strokeColor=#646464;strokeWidth=1.5" edge="1" source="cell_4" target="cell_5" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_10" value="" style="endArrow=classic;strokeColor=#646464;strokeWidth=1.5" edge="1" source="cell_5" target="cell_6" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

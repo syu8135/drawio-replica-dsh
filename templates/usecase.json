@@ -1,0 +1,48 @@
+{
+  "id": "usecase",
+  "name": "用例图",
+  "description": "UML 用例图（角色 + 椭圆形用例 + 连接线）",
+  "category": "工程图",
+
+  "style": {
+    "colors": {
+      "actorFill": "#FFFFFF",
+      "actorStroke": "#000000",
+      "actorStrokeWidth": 1.5,
+      "usecaseFill": "#FFFFFF",
+      "usecaseStroke": "#000000",
+      "usecaseStrokeWidth": 1.5,
+      "lineColor": "#000000",
+      "lineWidth": 1,
+      "textColor": "#000000",
+      "bgColor": "#FFFFFF"
+    },
+    "typography": {
+      "actorNameSize": 14,
+      "usecaseSize": 14,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "paddingX": 80,
+      "paddingY": 40,
+      "actorX": 120,
+      "usecaseX": 500,
+      "usecaseGap": 15,
+      "usecaseW": 160,
+      "usecaseH": 50
+    }
+  },
+
+  "structure": {
+    "layout": "usecase",
+    "actorW": 60,
+    "actorH": 120,
+    "usecaseW": 160,
+    "usecaseH": 50
+  },
+
+  "canvas": {
+    "defaultWidth": 900,
+    "defaultHeight": 500
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "erd",
+  "name": "E-R 图",
+  "description": "实体关系图（Chen 记法：实体矩形、属性椭圆、关系菱形）",
+  "category": "工程图",
+
+  "style": {
+    "colors": {
+      "entityFill": "#FFFFFF",
+      "entityStroke": "#000000",
+      "entityStrokeWidth": 1.5,
+      "attrFill": "#FFFFFF",
+      "attrStroke": "#000000",
+      "attrStrokeWidth": 1.2,
+      "relFill": "#FFFFFF",
+      "relStroke": "#000000",
+      "relStrokeWidth": 1.5,
+      "lineColor": "#000000",
+      "lineWidth": 1,
+      "textColor": "#000000",
+      "bgColor": "#FFFFFF"
+    },
+    "typography": {
+      "entitySize": 20,
+      "attrSize": 16,
+      "relSize": 16,
+      "cardinalitySize": 14,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "entityW": 120,
+      "entityH": 60,
+      "attrW": 70,
+      "attrH": 32,
+      "relW": 100,
+      "relH": 60,
+      "attrGap": 12,
+      "entityGap": 350,
+      "attrDistance": 70
+    }
+  },
+
+  "canvas": {
+    "defaultWidth": 1400,
+    "defaultHeight": 900
+  }
+}

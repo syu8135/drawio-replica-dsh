@@ -1,0 +1,46 @@
+{
+  "layout": "radial",
+  "title": "缺电子金属活性位点",
+  "config": {
+    "canvasWidth": 800,
+    "canvasHeight": 800
+  },
+  "center": {
+    "type": "oval",
+    "text": "表界面调控",
+    "style": { "fillColor": "#6464C8", "fontColor": "#FFFFFF", "bold": true, "fontSize": 13 }
+  },
+  "rings": [
+    {
+      "radius": 350,
+      "style": { "fillColor": "#E6DCF0", "strokeColor": "#B4AEC8", "dashed": true },
+      "labels": [
+        { "text": "能垒降低", "angle": -45, "style": { "fontColor": "#00B478", "bold": true } },
+        { "text": "结构明确", "angle": 45, "style": { "fontColor": "#C8A032", "bold": true } }
+      ]
+    },
+    {
+      "radius": 280,
+      "style": { "fillColor": "#D2C8E6", "strokeColor": "#A8A0C8" },
+      "labels": [
+        { "text": "界面构筑", "angle": -60 },
+        { "text": "多位点协同", "angle": 60 }
+      ]
+    },
+    {
+      "radius": 210,
+      "style": { "fillColor": "#B4AADC", "strokeColor": "#968CC8" },
+      "labels": [
+        { "text": "H₂活化", "angle": -30 },
+        { "text": "C-C偶联", "angle": 30 }
+      ]
+    },
+    {
+      "radius": 140,
+      "style": { "fillColor": "#6464C8", "strokeColor": "#5050B4" },
+      "labels": [
+        { "text": "氢溢流效应", "angle": 0, "style": { "fontColor": "#FFFFFF", "bold": true } }
+      ]
+    }
+  ]
+}

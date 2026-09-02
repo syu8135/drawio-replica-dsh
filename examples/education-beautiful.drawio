@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-08-31T11:58:19.433Z" agent="drawio-replica-dsh" version="24.0.0" type="device">
+  <diagram name="产教融合实战基座" id="diagram_1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="cell_2" value="" style="ellipse;fillColor=#6464C8;strokeColor=#5050B4;strokeWidth=1;dashed=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="340" y="340" width="220" height="220" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_3" value="海浪智学" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="410" y="358" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_4" value="真实场景" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="487" y="435" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_5" value="双轨评测" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="410" y="512" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_6" value="" style="ellipse;fillColor=#B4AADC;strokeColor=#968CC8;strokeWidth=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="270" y="270" width="360" height="360" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_7" value="图谱驱动" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=12;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="473" y="325.8807991231607" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_8" value="个性化学习" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=11;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="347.00000000000006" y="325.8807991231607" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_9" value="人机协同" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=12;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="473" y="544.1192008768393" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_10" value="工程化教学" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=11;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="347.00000000000006" y="544.1192008768393" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_11" value="" style="ellipse;fillColor=#D2C8E6;strokeColor=#A8A0C8;strokeWidth=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="200" y="200" width="500" height="500" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_12" value="智能采集" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=14;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="410" y="260" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_13" value="合规固本" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=14;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="585" y="435" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_14" value="产教融链" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=14;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="235" y="435" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_15" value="" style="ellipse;fillColor=#E6DCF0;strokeColor=#B4AEC8;strokeWidth=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="130" y="130" width="640" height="640" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_16" value="学" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=20;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="251.60808101421338" y="276.6080810142133" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_17" value="评" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=20;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="568.3919189857867" y="276.6080810142134" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_18" value="馈" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=20;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="568.3919189857867" y="593.3919189857866" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_19" value="练" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=20;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="251.60808101421338" y="593.3919189857867" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_20" value="产教融合
+实战基座" style="ellipse;fillColor=#000000;strokeColor=#000000;fontSize=14;fontColor=#000000;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="380" y="415" width="140" height="70" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

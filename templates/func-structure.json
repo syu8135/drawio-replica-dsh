@@ -1,0 +1,51 @@
+{
+  "id": "func-structure",
+  "name": "功能结构图",
+  "description": "三层树状功能结构图（系统→模块→功能），参考电商系统风格",
+  "category": "工程图",
+
+  "style": {
+    "colors": {
+      "rectFill": "#FFFFFF",
+      "rectStroke": "#000000",
+      "rectStrokeWidth": 1.5,
+      "lineColor": "#000000",
+      "lineWidth": 1,
+      "textColor": "#000000",
+      "bgColor": "#FFFFFF"
+    },
+    "typography": {
+      "systemSize": 16,
+      "moduleSize": 14,
+      "funcSize": 13,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "paddingX": 115,
+      "paddingY": 30,
+      "layer1Y": 30,
+      "layer2Y": 130,
+      "layer3Y": 230,
+      "busGap": 25,
+      "funcGap": 10
+    }
+  },
+
+  "structure": {
+    "layout": "func-structure",
+    "systemRectW": 180,
+    "systemRectH": 45,
+    "moduleRectW": 180,
+    "moduleRectH": 45,
+    "funcRectW": 49,
+    "funcCharHeight": 18,
+    "funcCharGap": 2,
+    "funcPadding": 10,
+    "showTitle": false
+  },
+
+  "canvas": {
+    "defaultWidth": 1000,
+    "defaultHeight": 500
+  }
+}

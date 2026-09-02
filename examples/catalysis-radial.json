@@ -1,0 +1,38 @@
+{
+  "template": "radial",
+  "title": "缺电子金属活性位点",
+  "center": {
+    "text": "表界面调控",
+    "style": { "fontSize": 14 }
+  },
+  "rings": [
+    {
+      "radius": 350,
+      "dashed": true,
+      "labels": [
+        {"text": "能垒降低", "angle": -50, "bold": true, "style": {"fontColor": "#00B478"}},
+        {"text": "结构明确", "angle": 50, "bold": true, "style": {"fontColor": "#C8A032"}}
+      ]
+    },
+    {
+      "radius": 280,
+      "labels": [
+        {"text": "界面构筑", "angle": -55},
+        {"text": "多位点协同", "angle": 55}
+      ]
+    },
+    {
+      "radius": 210,
+      "labels": [
+        {"text": "H₂活化", "angle": -35},
+        {"text": "C-C偶联", "angle": 35}
+      ]
+    },
+    {
+      "radius": 140,
+      "labels": [
+        {"text": "氢溢流效应", "angle": 0, "bold": true}
+      ]
+    }
+  ]
+}

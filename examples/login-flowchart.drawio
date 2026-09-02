@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-01T01:59:44.389Z" agent="drawio-replica-dsh" version="24.0.0" type="device">
+  <diagram name="用户登录流程" id="diagram_1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="cell_2" value="开始" style="ellipse;fillColor=#2196F3;strokeColor=#333333;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="50" y="100" width="120" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_3" value="输入账号密码" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#2196F3;strokeColor=#333333;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="250" y="100" width="120" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_4" value="验证通过？" style="rhombus;fillColor=#FF9800;strokeColor=#333333;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="450" y="100" width="120" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_5" value="登录成功" style="fillColor=#2196F3;strokeColor=#333333;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="50" y="260" width="120" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_6" value="提示错误" style="fillColor=#2196F3;strokeColor=#333333;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="250" y="260" width="120" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_7" value="结束" style="ellipse;fillColor=#2196F3;strokeColor=#333333;strokeWidth=1;fontSize=12;fontColor=#FFFFFF;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="450" y="260" width="120" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_8" value="" style="endArrow=classic;strokeColor=#333333;strokeWidth=2" edge="1" source="cell_[object Object]2" target="cell_[object Object]2" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_9" value="" style="endArrow=classic;strokeColor=#333333;strokeWidth=2" edge="1" source="cell_[object Object]2" target="cell_[object Object]2" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_10" value="" style="endArrow=classic;strokeColor=#333333;strokeWidth=2" edge="1" source="cell_[object Object]2" target="cell_[object Object]2" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_11" value="" style="endArrow=classic;strokeColor=#333333;strokeWidth=2" edge="1" source="cell_[object Object]2" target="cell_[object Object]2" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_12" value="" style="endArrow=classic;strokeColor=#333333;strokeWidth=2" edge="1" source="cell_[object Object]2" target="cell_[object Object]2" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_13" value="" style="endArrow=classic;strokeColor=#333333;strokeWidth=2" edge="1" source="cell_[object Object]2" target="cell_[object Object]2" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

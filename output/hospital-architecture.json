@@ -1,0 +1,41 @@
+{
+  "template": "architecture",
+  "title": "互联网问诊平台分层架构图",
+  "layers": [
+    {
+      "name": "前端",
+      "components": [
+        {"name": "Bootstrap"},
+        {"name": "HTML/JavaScript"},
+        {"name": "静态资源"}
+      ]
+    },
+    {
+      "name": "表示层",
+      "components": [
+        {"name": "POST/GET 解析"},
+        {"name": "数据转换"},
+        {"name": "路由转发"}
+      ]
+    },
+    {
+      "name": "应用层",
+      "components": [
+        {"name": "注册登录"},
+        {"name": "线上问诊"},
+        {"name": "在线支付"},
+        {"name": "评价"},
+        {"name": "处方电子"},
+        {"name": "病例管理"},
+        {"name": "运营数据看板"}
+      ]
+    },
+    {
+      "name": "数据存储层",
+      "components": [
+        {"name": "MySQL", "type": "database"},
+        {"name": "Hive", "type": "database"}
+      ]
+    }
+  ]
+}

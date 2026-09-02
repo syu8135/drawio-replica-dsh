@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-08-31T03:10:55.070Z" agent="drawio-replica-dsh" version="24.0.0" type="device">
+  <diagram name="多相催化技术路线图" id="diagram_1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1514" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="cell_2" value="多相催化表界面机理揭示与精准创制技术路线" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=14;fontColor=#000000;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="400" y="800" width="700" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_3" value="质疑传统机理" style="rounded=1;arcSize=50;fillColor=#5050B4;strokeColor=#3C3C96;strokeWidth=1.5;fontSize=14;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="120" y="20" width="260" height="45" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_4" value="多相新反应路径" style="rounded=1;arcSize=50;fillColor=#B4B4DC;strokeColor=#9696C8;strokeWidth=1.5;fontSize=14;fontColor=#000000;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="420" y="20" width="280" height="45" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_5" value="均相机理惯性迁移" style="rounded=1;arcSize=50;fillColor=#B4B4DC;strokeColor=#9696C8;strokeWidth=1.5;fontSize=14;fontColor=#000000;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="740" y="20" width="280" height="45" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_6" value="工业工况验证" style="rounded=1;arcSize=50;fillColor=#5050B4;strokeColor=#3C3C96;strokeWidth=1.5;fontSize=14;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1060" y="20" width="280" height="45" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_7" value="理论突破" style="fillColor=#3C8CC8;strokeColor=#2878B4;strokeWidth=1.5;fontSize=16;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="30" y="90" width="130" height="680" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_8" value="机理黑箱" style="fillColor=#C8F0F0;strokeColor=#96C8C8;strokeWidth=1;fontSize=11;fontColor=#008080;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="40" y="160" width="110" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_9" value="依赖强酸" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#E8F0F8;strokeColor=#96B4C8;strokeWidth=1;fontSize=11;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="45" y="210" width="100" height="70" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_10" value="原位表征" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#D8D8F0;strokeColor=#9696C8;strokeWidth=1;fontSize=11;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="45" y="310" width="100" height="70" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_11" value="寿命偏短" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#E8F0F8;strokeColor=#96B4C8;strokeWidth=1;fontSize=11;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="45" y="410" width="100" height="70" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_12" value="应用验证" style="fillColor=#3C8CC8;strokeColor=#2878B4;strokeWidth=1.5;fontSize=16;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1350" y="90" width="140" height="680" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_13" value="验证" style="fillColor=#C8F0F0;strokeColor=#96C8C8;strokeWidth=1;fontSize=11;fontColor=#008080;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1360" y="160" width="120" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_14" value="突破惯性" style="ellipse;fillColor=#E8F0F8;strokeColor=#96B4C8;strokeWidth=1;fontSize=11;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1360" y="210" width="120" height="70" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_15" value="+" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=22;fontColor=#00B478;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="1390" y="285" width="60" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_16" value="位点精准" style="ellipse;fillColor=#D8D8F0;strokeColor=#9696C8;strokeWidth=1;fontSize=11;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1360" y="320" width="120" height="70" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_17" value="原子构筑" style="ellipse;fillColor=#E8F0F8;strokeColor=#96B4C8;strokeWidth=1;fontSize=11;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1360" y="420" width="120" height="70" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_18" value="精准创制：原子级构筑" style="rounded=1;fillColor=#3C8CC8;strokeColor=#2878B4;strokeWidth=1.5;fontSize=14;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="490" y="80" width="380" height="42" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_19" value="传统金属氯化物均相机理" style="fillColor=#3C8CC8;strokeColor=#2878B4;strokeWidth=1;fontSize=11;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="200" y="180" width="270" height="35" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_20" value="快速失活" style="fillColor=#F0F0F0;strokeColor=#B4B4B4;strokeWidth=0.8;fontSize=10;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="210" y="230" width="55" height="130" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_21" value="寿命" style="ellipse;fillColor=#F0F0F0;strokeColor=#B4B4B4;strokeWidth=0.8;fontSize=12;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="285" y="240" width="70" height="110" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_22" value="协同不足" style="fillColor=#F0F0F0;strokeColor=#B4B4B4;strokeWidth=0.8;fontSize=10;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="375" y="230" width="55" height="130" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_23" value="依赖强酸助剂" style="fillColor=#3C8CC8;strokeColor=#2878B4;strokeWidth=1;fontSize=11;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="200" y="375" width="270" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_24" value="缺电子位点+晶格氧介导路径" style="fillColor=#3C8CC8;strokeColor=#2878B4;strokeWidth=1;fontSize=11;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="980" y="180" width="300" height="35" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_25" value="结构稳定" style="fillColor=#F0F0F0;strokeColor=#B4B4B4;strokeWidth=0.8;fontSize=10;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="990" y="230" width="65" height="130" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_26" value="长寿" style="ellipse;fillColor=#F0F0F0;strokeColor=#B4B4B4;strokeWidth=0.8;fontSize=12;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1075" y="240" width="80" height="110" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_27" value="长效稳定" style="fillColor=#F0F0F0;strokeColor=#B4B4B4;strokeWidth=0.8;fontSize=10;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="1175" y="230" width="65" height="130" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_28" value="无需强酸助剂" style="fillColor=#3C8CC8;strokeColor=#2878B4;strokeWidth=1;fontSize=11;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="980" y="375" width="300" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_29" value="" style="ellipse;fillColor=#E6DCF0;strokeColor=#B4AEC8;strokeWidth=1;dashed=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="520" y="150" width="420" height="420" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_30" value="缺电子金属活性位点" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=12;fontColor=#5050A0;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="590" y="155" width="280" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_31" value="" style="ellipse;fillColor=#D2C8E6;strokeColor=#A8A0C8;strokeWidth=0.8;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="560" y="190" width="340" height="340" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_32" value="" style="ellipse;fillColor=#B4AADC;strokeColor=#968CC8;strokeWidth=0.8;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="600" y="230" width="260" height="260" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_33" value="" style="ellipse;fillColor=#6464C8;strokeColor=#5050B4;strokeWidth=0.8;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="640" y="275" width="180" height="175" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_34" value="表界面调控" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=13;fontColor=#FFFFFF;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="660" y="410" width="140" height="35" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_35" value="氢溢流效应" style="ellipse;fillColor=#50A0DC;strokeColor=#3C8CC8;strokeWidth=0.8;fontSize=11;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="670" y="320" width="120" height="90" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_36" value="关键反应" style="fillColor=#FFFFFF;strokeColor=#B4B4B4;strokeWidth=0.8;fontSize=10;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="690" y="280" width="80" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_37" value="新活性中心" style="ellipse;fillColor=#5050B4;strokeColor=#3C3CA0;strokeWidth=0.8;fontSize=9;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="700" y="210" width="60" height="50" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_38" value="能垒降低" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#00B478;fontStyle=1;align=center;rotation=-30" vertex="1" parent="1">
+        <mxGeometry x="530" y="220" width="70" height="80" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_39" value="结构明确" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#C8A032;fontStyle=1;align=center;rotation=30" vertex="1" parent="1">
+        <mxGeometry x="870" y="220" width="70" height="80" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_40" value="界面构筑" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=9;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="560" y="300" width="60" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_41" value="H₂活化" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=9;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="560" y="370" width="60" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_42" value="C-C偶联" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=9;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="850" y="370" width="60" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_43" value="多位点协同" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=9;fontColor=#000000" vertex="1" parent="1">
+        <mxGeometry x="830" y="300" width="60" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_44" value="应用验证：工业适配" style="rounded=1;fillColor=#3C8CC8;strokeColor=#2878B4;strokeWidth=1.5;fontSize=14;fontColor=#FFFFFF;fontStyle=1;align=center;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="490" y="590" width="380" height="42" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_45" value="机理路径替代" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=11;fontColor=#C8A032;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="200" y="425" width="270" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_46" value="表面晶格氧介导质子转移" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=9;fontColor=#646464;align=center" vertex="1" parent="1">
+        <mxGeometry x="220" y="450" width="230" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_47" value="结构优化路径" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=11;fontColor=#C8A032;fontStyle=1;align=center" vertex="1" parent="1">
+        <mxGeometry x="980" y="425" width="300" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_48" value="双单原子强电子耦合协同" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=9;fontColor=#646464;align=center" vertex="1" parent="1">
+        <mxGeometry x="1000" y="450" width="260" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_49" value="纳米鸟构筑策略" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=9;fontColor=#B4A064;align=center" vertex="1" parent="1">
+        <mxGeometry x="200" y="495" width="270" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_50" value="纳米鸟构筑策略" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=9;fontColor=#B4A064;align=center" vertex="1" parent="1">
+        <mxGeometry x="980" y="495" width="300" height="25" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_51" value="" style="endArrow=classic;strokeColor=#B43232;strokeWidth=2" edge="1" source="cell_3" target="cell_4" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_52" value="" style="endArrow=classic;strokeColor=#B43232;strokeWidth=2" edge="1" source="cell_4" target="cell_5" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_53" value="" style="endArrow=classic;strokeColor=#00B478;strokeWidth=2" edge="1" source="cell_9" target="cell_10" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_54" value="" style="endArrow=classic;strokeColor=#00B478;strokeWidth=2" edge="1" source="cell_10" target="cell_11" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_55" value="" style="endArrow=classic;strokeColor=#00B478;strokeWidth=2" edge="1" source="cell_15" target="cell_16" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_56" value="" style="endArrow=classic;strokeColor=#C83232;strokeWidth=2" edge="1" source="cell_19" target="cell_20" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_57" value="" style="endArrow=classic;strokeColor=#C83232;strokeWidth=2" edge="1" source="cell_20" target="cell_21" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_58" value="" style="endArrow=classic;strokeColor=#C83232;strokeWidth=2" edge="1" source="cell_24" target="cell_25" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_59" value="" style="endArrow=classic;strokeColor=#C83232;strokeWidth=2" edge="1" source="cell_25" target="cell_26" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_60" value="" style="endArrow=classic;strokeColor=#C8B464;strokeWidth=1;dashed=1;curved=1" edge="1" source="cell_27" target="cell_19" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_61" value="" style="endArrow=classic;strokeColor=#C8B464;strokeWidth=1;dashed=1;curved=1" edge="1" source="cell_27" target="cell_24" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_62" value="" style="endArrow=classic;strokeColor=#C8B464;strokeWidth=1;dashed=1;curved=1" edge="1" source="cell_46" target="cell_19" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_63" value="" style="endArrow=classic;strokeColor=#C8B464;strokeWidth=1;dashed=1;curved=1" edge="1" source="cell_46" target="cell_24" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

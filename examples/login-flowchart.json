@@ -1,0 +1,20 @@
+{
+  "template": "flowchart",
+  "title": "用户登录流程",
+  "nodes": [
+    {"id": "start", "type": "start", "text": "开始"},
+    {"id": "input", "type": "io", "text": "输入账号密码"},
+    {"id": "validate", "type": "decision", "text": "验证通过？"},
+    {"id": "success", "type": "process", "text": "登录成功"},
+    {"id": "fail", "type": "process", "text": "提示错误"},
+    {"id": "end", "type": "end", "text": "结束"}
+  ],
+  "flows": [
+    {"from": "start", "to": "input"},
+    {"from": "input", "to": "validate"},
+    {"from": "validate", "to": "success", "label": "是"},
+    {"from": "validate", "to": "fail", "label": "否"},
+    {"from": "fail", "to": "input"},
+    {"from": "success", "to": "end"}
+  ]
+}

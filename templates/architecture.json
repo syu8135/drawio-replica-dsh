@@ -1,0 +1,53 @@
+{
+  "id": "architecture",
+  "name": "架构图",
+  "description": "系统技术架构图（从底向上绘制）",
+  "category": "工程图",
+
+  "style": {
+    "colors": {
+      "layerBg1": "#F1F8E9",
+      "layerBg2": "#E8F0FE",
+      "layerBg3": "#FFF8E1",
+      "layerBg4": "#F3E8FF",
+      "layerBg5": "#E0F7FA",
+      "layerBg6": "#FFFDE7",
+      "layerBg7": "#FFF0F0",
+      "componentBg": "#FFFFFF",
+      "componentBorder": "#555555",
+      "labelColor": "#333333",
+      "sidebarColor": "#FFE0E0",
+      "dbColor": "#D1C4E9",
+      "envColor": "#BBDEFB",
+      "dashedLine": "#CCCCCC"
+    },
+    "typography": {
+      "titleSize": 22,
+      "layerLabelSize": 16,
+      "componentSize": 12,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "padding": 40,
+      "labelWidth": 130,
+      "layerGap": 25,
+      "componentGap": 20,
+      "sidebarWidth": 80
+    }
+  },
+
+  "structure": {
+    "layout": "architecture",
+    "layerHeight": 72,
+    "componentWidth": 140,
+    "componentHeight": 45,
+    "showLayerLabels": true,
+    "showDashedLines": true,
+    "showSidebar": false
+  },
+
+  "canvas": {
+    "defaultWidth": 900,
+    "defaultHeight": 800
+  }
+}

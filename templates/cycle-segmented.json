@@ -1,0 +1,66 @@
+{
+  "id": "cycle-segmented",
+  "name": "分段同心圆图（循环流程）",
+  "description": "多段同心圆环，带箭头指示流向，适合展示循环流程、教学体系、业务闭环",
+  "category": "科研机理图",
+
+  "style": {
+    "colors": {
+      "outerRing": "#F4A460",
+      "outerRingDark": "#E8943A",
+      "secondRing": "#FFD700",
+      "secondRingLight": "#FFEC8B",
+      "thirdRing": "#DC143C",
+      "thirdRingLight": "#FF4500",
+      "centerBg": "#1E90FF",
+      "centerFg": "#FFFFFF",
+      "textDark": "#000080",
+      "textWhite": "#FFFFFF"
+    },
+    "typography": {
+      "titleSize": 18,
+      "centerMainSize": 20,
+      "centerSubSize": 12,
+      "ringLabelSize": 14,
+      "outerCharSize": 24,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "padding": 50,
+      "ringGap": 30,
+      "segmentGap": 15
+    },
+    "effects": {
+      "shadow": false,
+      "borderRadius": 0,
+      "strokeWidth": 2,
+      "arrowSize": 20
+    }
+  },
+
+  "structure": {
+    "layout": "cycle-segmented",
+    "maxRings": 5,
+    "centerShape": "oval",
+    "ringShape": "arc",
+    "hasArrows": true
+  },
+
+  "rules": {
+    "centerFillColor": "centerBg",
+    "centerFontColor": "centerFg",
+    "centerBold": true,
+    "outerCharColor": "textDark",
+    "ringLabelColor": "textDark"
+  },
+
+  "canvas": {
+    "defaultWidth": 1000,
+    "defaultHeight": 1000,
+    "centerWidth": 200,
+    "centerHeight": 200,
+    "maxRadius": 450,
+    "radiusStep": 100,
+    "ringWidth": 80
+  }
+}

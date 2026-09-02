@@ -1,0 +1,64 @@
+{
+  "id": "radial",
+  "name": "同心圆机理图",
+  "description": "多层同心圆结构，适合展示机理、核心概念、层次关系",
+  "category": "科研机理图",
+
+  "style": {
+    "colors": {
+      "ringColors": ["#E6DCF0", "#D2C8E6", "#B4AADC", "#6464C8"],
+      "ringStrokeColors": ["#B4AEC8", "#A8A0C8", "#968CC8", "#5050B4"],
+      "centerBg": "#6464C8",
+      "centerFg": "#FFFFFF",
+      "labelColor": "#000000",
+      "labelHighlight": "#00B478",
+      "labelGold": "#C8A032",
+      "text": "#000000",
+      "textLight": "#6C757D"
+    },
+    "typography": {
+      "titleSize": 18,
+      "centerSize": 14,
+      "ringLabelSize": 10,
+      "innerLabelSize": 9,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "padding": 50,
+      "ringGap": 70,
+      "labelOffset": 0.7
+    },
+    "effects": {
+      "shadow": false,
+      "borderRadius": 0,
+      "strokeWidth": 1.0,
+      "dashedOuter": true
+    }
+  },
+
+  "structure": {
+    "layout": "radial",
+    "maxRings": 5,
+    "maxLabelsPerRing": 8,
+    "centerShape": "oval",
+    "ringShape": "oval"
+  },
+
+  "rules": {
+    "centerFillColor": "centerBg",
+    "centerFontColor": "centerFg",
+    "centerBold": true,
+    "labelFontColor": "labelColor",
+    "highlightLabelColor": "labelHighlight",
+    "goldLabelColor": "labelGold"
+  },
+
+  "canvas": {
+    "defaultWidth": 900,
+    "defaultHeight": 900,
+    "centerWidth": 140,
+    "centerHeight": 70,
+    "maxRadius": 350,
+    "radiusStep": 70
+  }
+}

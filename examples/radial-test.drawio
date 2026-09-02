@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-08-31T04:17:43.195Z" agent="drawio-replica-dsh" version="24.0.0" type="device">
+  <diagram name="缺电子金属活性位点" id="diagram_1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="cell_2" value="" style="ellipse;fillColor=#6464C8;strokeColor=#5050B4;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="260" y="260" width="280" height="280" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_3" value="氢溢流效应" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="458" y="385" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_4" value="" style="ellipse;fillColor=#B4AADC;strokeColor=#968CC8;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="190" y="190" width="420" height="420" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_5" value="H₂活化" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="487.3057343563124" y="311.5" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_6" value="C-C偶联" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="487.3057343563124" y="458.5" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_7" value="" style="ellipse;fillColor=#D2C8E6;strokeColor=#A8A0C8;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="120" y="120" width="560" height="560" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_8" value="界面构筑" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="458" y="215.25902085825004" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_9" value="多位点协同" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="458" y="554.7409791417499" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_10" value="" style="ellipse;fillColor=#E6DCF0;strokeColor=#B4AEC8;dashed=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="50" y="50" width="700" height="700" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_11" value="能垒降低" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="533.2411613907042" y="211.75883860929588" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_12" value="结构明确" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;;fontSize=10;fontColor=#000000;align=center" vertex="1" parent="1">
+        <mxGeometry x="533.2411613907042" y="558.2411613907041" width="80" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_13" value="表界面调控" style="ellipse;fillColor=#6464C8;fontSize=13;fontColor=#FFFFFF;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="340" y="370" width="120" height="60" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

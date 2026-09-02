@@ -1,0 +1,43 @@
+{
+  "id": "flowchart",
+  "name": "流程图",
+  "description": "业务流程图、操作步骤图",
+  "category": "工程图",
+
+  "style": {
+    "colors": {
+      "startEnd": "#4CAF50",
+      "process": "#2196F3",
+      "decision": "#FF9800",
+      "io": "#9C27B0",
+      "arrow": "#333333",
+      "text": "#000000"
+    },
+    "typography": {
+      "titleSize": 18,
+      "nodeSize": 12,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "padding": 50,
+      "nodeGap": 80,
+      "rowGap": 100
+    }
+  },
+
+  "structure": {
+    "layout": "flowchart",
+    "nodeWidth": 120,
+    "nodeHeight": 60,
+    "startShape": "oval",
+    "endShape": "oval",
+    "processShape": "rect",
+    "decisionShape": "diamond",
+    "ioShape": "parallelogram"
+  },
+
+  "canvas": {
+    "defaultWidth": 1200,
+    "defaultHeight": 800
+  }
+}

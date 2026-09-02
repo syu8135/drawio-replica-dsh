@@ -1,0 +1,95 @@
+{
+  "layout": "layered",
+  "title": "载流子输运微观机制",
+  "config": {
+    "canvasWidth": 1672,
+    "canvasHeight": 958,
+    "layerGap": 25,
+    "padding": 50
+  },
+  "layers": [
+    {
+      "id": "drift",
+      "title": "Drift",
+      "type": "parallelogram",
+      "height": 110,
+      "style": { "fillColor": "#F8E8E8", "strokeColor": "#C08080" },
+      "items": [
+        { "type": "rect", "text": "漂移", "style": { "fillColor": "#8B0000", "fontColor": "#FFFFFF", "bold": true, "fontSize": 12 } },
+        { "type": "rect", "text": "扩散", "style": { "fillColor": "#8B0000", "fontColor": "#FFFFFF", "bold": true, "fontSize": 12 } },
+        { "type": "rect", "text": "散射", "style": { "fillColor": "#8B0000", "fontColor": "#FFFFFF", "bold": true, "fontSize": 12 } }
+      ],
+      "params": [
+        { "type": "roundedrect", "text": "漂移速度", "style": { "fillColor": "#E8F4F8" } },
+        { "type": "roundedrect", "text": "迁移率", "style": { "fillColor": "#E8F4F8" } },
+        { "type": "roundedrect", "text": "浓度梯度", "style": { "fillColor": "#E8F4F8" } }
+      ],
+      "note": "浓度梯度（dn/dx）引起的定向运动"
+    },
+    {
+      "id": "carrier",
+      "title": "Carrier",
+      "subtitle": "微观机制",
+      "leftLabel": "微观",
+      "type": "parallelogram",
+      "height": 130,
+      "style": { "fillColor": "#F0E0E0", "strokeColor": "#C08080" },
+      "items": [
+        { "type": "rect", "text": "晶格振动", "style": { "fillColor": "#8B0000", "fontColor": "#FFFFFF", "bold": true, "fontSize": 10 } },
+        { "type": "rect", "text": "电离杂质", "style": { "fillColor": "#8B0000", "fontColor": "#FFFFFF", "bold": true, "fontSize": 10 } }
+      ],
+      "note": "平均自由时间（τ）和平均自由程（l）",
+      "mechanisms": [
+        { "type": "diamond", "text": "声子散射", "style": { "fillColor": "#F0F0F0", "fontSize": 8 } },
+        { "type": "diamond", "text": "速度饱和", "style": { "fillColor": "#F0F0F0", "fontSize": 8 } },
+        { "type": "diamond", "text": "电子效应", "style": { "fillColor": "#F0F0F0", "fontSize": 8 } },
+        { "type": "diamond", "text": "弹道输运", "style": { "fillColor": "#F0F0F0", "fontSize": 8 } }
+      ]
+    },
+    {
+      "id": "alloy",
+      "title": "Alloy",
+      "subtitle": "热电子效应",
+      "leftLabel": "宏观",
+      "type": "parallelogram",
+      "height": 140,
+      "style": { "fillColor": "#F0E0E0", "strokeColor": "#C08080" },
+      "items": [
+        { "type": "rect", "text": "内部激励", "style": { "fillColor": "#4169E1", "fontColor": "#FFFFFF", "bold": true, "fontSize": 9 } },
+        { "type": "rect", "text": "外部激励", "style": { "fillColor": "#4169E1", "fontColor": "#FFFFFF", "bold": true, "fontSize": 9 } }
+      ],
+      "params": [
+        { "type": "rect", "text": "统计平均", "style": { "fillColor": "#F0F0F0", "fontSize": 8 } },
+        { "type": "rect", "text": "电流密度", "style": { "fillColor": "#F0F0F0", "fontSize": 8 } },
+        { "type": "rect", "text": "宏观表现", "style": { "fillColor": "#F0F0F0", "fontSize": 8 } },
+        { "type": "rect", "text": "定向运动", "style": { "fillColor": "#F0F0F0", "fontSize": 8 } }
+      ],
+      "note": "微观到宏观",
+      "mechanisms": [
+        { "type": "oval", "text": "总电流", "style": { "fillColor": "#E8F4F8", "fontSize": 9 } },
+        { "type": "oval", "text": "扩散电流", "style": { "fillColor": "#E8F4F8", "fontSize": 9 } }
+      ]
+    },
+    {
+      "id": "ballistic",
+      "title": "Ballistic",
+      "leftLabel": "趋势",
+      "type": "parallelogram",
+      "height": 110,
+      "style": { "fillColor": "#F8E8E8", "strokeColor": "#C08080" },
+      "mechanisms": [
+        { "type": "diamond", "text": "平均漂移速度", "style": { "fillColor": "#8B0000", "fontColor": "#FFFFFF", "bold": true, "fontSize": 11 } },
+        { "type": "diamond", "text": "提供定向运动", "style": { "fillColor": "#8B0000", "fontColor": "#FFFFFF", "bold": true, "fontSize": 11 } }
+      ]
+    }
+  ],
+  "sidebar": {
+    "title": "重要输运现象",
+    "categories": ["物理图像", "浓度梯度"],
+    "properties": ["流子波动性", "多种样散射", "非平衡函数", "非定向运动"]
+  },
+  "connections": [
+    { "from": "carrier", "to": "sidebar", "label": "微观机制", "style": { "endArrow": "classic", "strokeColor": "#4169E1", "strokeWidth": 3 } },
+    { "from": "alloy", "to": "sidebar", "label": "热电子效应", "style": { "endArrow": "classic", "strokeColor": "#4169E1", "strokeWidth": 3 } }
+  ]
+}

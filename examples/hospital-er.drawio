@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-08-31T02:48:59.029Z" agent="drawio-replica-dsh" version="24.0.0" type="device">
+  <diagram name="医院ER图" id="diagram_1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="cell_2" value="病房" style="strokeWidth=1.5;fontSize=12;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="170" width="140" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_3" value="科室" style="strokeWidth=1.5;fontSize=12;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="720" y="170" width="140" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_4" value="病人" style="strokeWidth=1.5;fontSize=12;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="180" y="560" width="140" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_5" value="医生" style="strokeWidth=1.5;fontSize=12;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="720" y="560" width="140" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_6" value="组成" style="rhombus;strokeWidth=1.5;fontSize=11;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="485" y="180" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_7" value="入住" style="rhombus;strokeWidth=1.5;fontSize=11;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="250" y="370" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_8" value="从属" style="rhombus;strokeWidth=1.5;fontSize=11;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="790" y="370" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_9" value="诊治" style="rhombus;strokeWidth=1.5;fontSize=11;fontStyle=1;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="520" y="590" width="70" height="40" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_10" value="病房号" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="100" y="50" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_11" value="床位号" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="230" y="50" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_12" value="科名" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="580" y="50" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_13" value="科地址" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="710" y="40" width="100" height="70" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_14" value="科电话" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="840" y="50" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_15" value="病历号" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="60" y="680" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_16" value="姓名" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="190" y="680" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_17" value="性别" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="320" y="680" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_18" value="工作证号" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="580" y="680" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_19" value="姓名" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="710" y="680" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_20" value="职称" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="840" y="680" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_21" value="年龄" style="ellipse;fontSize=10;whiteSpace=wrap;html=1" vertex="1" parent="1">
+        <mxGeometry x="970" y="680" width="100" height="60" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_22" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_2" target="cell_6" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_23" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_6" target="cell_3" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_24" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_2" target="cell_7" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_25" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_7" target="cell_4" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_26" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_3" target="cell_8" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_27" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_8" target="cell_5" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_28" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_4" target="cell_9" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_29" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_9" target="cell_5" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_30" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_2" target="cell_10" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_31" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_2" target="cell_11" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_32" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_3" target="cell_12" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_33" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_3" target="cell_13" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_34" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_3" target="cell_14" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_35" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_4" target="cell_15" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_36" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_4" target="cell_16" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_37" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_4" target="cell_17" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_38" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_5" target="cell_18" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_39" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_5" target="cell_19" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_40" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_5" target="cell_20" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="cell_41" value="" style="endArrow=classic;strokeWidth=1" edge="1" source="cell_5" target="cell_21" parent="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

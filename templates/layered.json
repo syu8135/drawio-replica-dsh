@@ -1,0 +1,93 @@
+{
+  "id": "layered",
+  "name": "分层技术路线图",
+  "description": "多层平行四边形堆叠，适合展示技术路线、研究框架、系统架构",
+  "category": "科研路线图",
+
+  "style": {
+    "colors": {
+      "layerBg": ["#F8E8E8", "#F0E0E0", "#F0E0E0", "#F8E8E8"],
+      "itemBg": "#8B0000",
+      "itemFg": "#FFFFFF",
+      "paramBg": "#E8F4F8",
+      "paramFg": "#000000",
+      "mechanismBg": "#F0F0F0",
+      "mechanismFg": "#000000",
+      "titleBg": "#3C8CC8",
+      "titleFg": "#FFFFFF",
+      "arrow": "#4169E1",
+      "text": "#000000",
+      "textLight": "#6C757D",
+      "textHighlight": "#8B0000",
+      "textGold": "#C8A032",
+      "textGreen": "#00B478"
+    },
+    "typography": {
+      "titleSize": 18,
+      "layerTitleSize": 16,
+      "itemSize": 11,
+      "paramSize": 10,
+      "mechanismSize": 9,
+      "noteSize": 9,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "layerGap": 25,
+      "itemGap": 12,
+      "paramGap": 10,
+      "padding": 50,
+      "sidebarGap": 30
+    },
+    "effects": {
+      "perspective": 0.15,
+      "shadow": false,
+      "borderRadius": 4,
+      "strokeWidth": 1.5,
+      "itemStrokeWidth": 1.0,
+      "paramStrokeWidth": 0.8
+    }
+  },
+
+  "structure": {
+    "layout": "layered",
+    "hasSidebar": true,
+    "sidebarPosition": "right",
+    "layerShape": "parallelogram",
+    "itemShape": "rect",
+    "paramShape": "roundedrect",
+    "mechanismShape": "diamond",
+    "arrowShape": "block-arrow",
+    "maxLayers": 6,
+    "maxItemsPerLayer": 5,
+    "maxParamsPerLayer": 5,
+    "maxMechanismsPerLayer": 6
+  },
+
+  "rules": {
+    "itemFillColor": "itemBg",
+    "itemFontColor": "itemFg",
+    "itemBold": true,
+    "paramFillColor": "paramBg",
+    "paramFontColor": "paramFg",
+    "mechanismFillColor": "mechanismBg",
+    "mechanismFontColor": "mechanismFg",
+    "layerTitleFillColor": "titleBg",
+    "layerTitleFontColor": "titleFg",
+    "noteFillColor": "paramBg",
+    "noteFontColor": "textLight"
+  },
+
+  "canvas": {
+    "defaultWidth": 1500,
+    "defaultHeight": 900,
+    "layerHeight": 120,
+    "layerWidthRatio": 0.65,
+    "sidebarWidth": 220,
+    "itemWidth": 80,
+    "itemHeight": 30,
+    "paramWidth": 100,
+    "paramHeight": 30,
+    "mechanismWidth": 70,
+    "mechanismHeight": 40
+  }
+}

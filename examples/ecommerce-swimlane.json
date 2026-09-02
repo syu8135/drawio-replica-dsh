@@ -1,0 +1,38 @@
+{
+  "template": "swimlane",
+  "title": "电商订单流程",
+  "lanes": [
+    {
+      "name": "用户",
+      "nodes": [
+        {"id": "u1", "text": "浏览商品"},
+        {"id": "u2", "text": "下单"},
+        {"id": "u3", "text": "支付"},
+        {"id": "u4", "text": "收货"}
+      ]
+    },
+    {
+      "name": "商家",
+      "nodes": [
+        {"id": "m1", "text": "确认订单"},
+        {"id": "m2", "text": "发货"},
+        {"id": "m3", "text": "处理售后"}
+      ]
+    },
+    {
+      "name": "平台",
+      "nodes": [
+        {"id": "p1", "text": "审核商家"},
+        {"id": "p2", "text": "处理投诉"}
+      ]
+    }
+  ],
+  "flows": [
+    {"from": "u1", "to": "u2"},
+    {"from": "u2", "to": "m1"},
+    {"from": "m1", "to": "u3"},
+    {"from": "u3", "to": "m2"},
+    {"from": "m2", "to": "u4"},
+    {"from": "u4", "to": "m3"}
+  ]
+}

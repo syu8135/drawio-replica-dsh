@@ -1,0 +1,88 @@
+{
+  "page": {
+    "name": "多相催化技术路线图",
+    "width": 1514,
+    "height": 850
+  },
+  "shapes": [
+    {"type":"text","x":400,"y":800,"w":700,"h":30,"text":"多相催化表界面机理揭示与精准创制技术路线","style":{"fontSize":14,"bold":true,"fontColor":"#000000","align":1}},
+
+    {"type":"cylinder-h","x":120,"y":20,"w":260,"h":45,"text":"质疑传统机理","style":{"fillColor":"#5050B4","strokeColor":"#3C3C96","strokeWidth":1.5,"fontSize":14,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"cylinder-h","x":420,"y":20,"w":280,"h":45,"text":"多相新反应路径","style":{"fillColor":"#B4B4DC","strokeColor":"#9696C8","strokeWidth":1.5,"fontSize":14,"bold":true,"fontColor":"#000000","align":1}},
+    {"type":"cylinder-h","x":740,"y":20,"w":280,"h":45,"text":"均相机理惯性迁移","style":{"fillColor":"#B4B4DC","strokeColor":"#9696C8","strokeWidth":1.5,"fontSize":14,"bold":true,"fontColor":"#000000","align":1}},
+    {"type":"cylinder-h","x":1060,"y":20,"w":280,"h":45,"text":"工业工况验证","style":{"fillColor":"#5050B4","strokeColor":"#3C3C96","strokeWidth":1.5,"fontSize":14,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"rect","x":30,"y":90,"w":130,"h":680,"text":"理论突破","style":{"fillColor":"#3C8CC8","strokeColor":"#2878B4","strokeWidth":1.5,"fontSize":16,"bold":true,"fontColor":"#FFFFFF","align":1,"verticalAlign":0}},
+    {"type":"rect","x":40,"y":160,"w":110,"h":30,"text":"机理黑箱","style":{"fillColor":"#C8F0F0","strokeColor":"#96C8C8","strokeWidth":1,"fontSize":11,"bold":true,"fontColor":"#008080","align":1}},
+    {"type":"cylinder","x":45,"y":210,"w":100,"h":70,"text":"依赖强酸","style":{"fillColor":"#E8F0F8","strokeColor":"#96B4C8","strokeWidth":1,"fontSize":11,"bold":true,"align":1}},
+    {"type":"cylinder","x":45,"y":310,"w":100,"h":70,"text":"原位表征","style":{"fillColor":"#D8D8F0","strokeColor":"#9696C8","strokeWidth":1,"fontSize":11,"bold":true,"align":1}},
+    {"type":"cylinder","x":45,"y":410,"w":100,"h":70,"text":"寿命偏短","style":{"fillColor":"#E8F0F8","strokeColor":"#96B4C8","strokeWidth":1,"fontSize":11,"bold":true,"align":1}},
+
+    {"type":"rect","x":1350,"y":90,"w":140,"h":680,"text":"应用验证","style":{"fillColor":"#3C8CC8","strokeColor":"#2878B4","strokeWidth":1.5,"fontSize":16,"bold":true,"fontColor":"#FFFFFF","align":1,"verticalAlign":0}},
+    {"type":"rect","x":1360,"y":160,"w":120,"h":30,"text":"验证","style":{"fillColor":"#C8F0F0","strokeColor":"#96C8C8","strokeWidth":1,"fontSize":11,"bold":true,"fontColor":"#008080","align":1}},
+    {"type":"oval","x":1360,"y":210,"w":120,"h":70,"text":"突破惯性","style":{"fillColor":"#E8F0F8","strokeColor":"#96B4C8","strokeWidth":1,"fontSize":11,"bold":true,"align":1}},
+    {"type":"text","x":1390,"y":285,"w":60,"h":30,"text":"+","style":{"fontSize":22,"bold":true,"fontColor":"#00B478","align":1}},
+    {"type":"oval","x":1360,"y":320,"w":120,"h":70,"text":"位点精准","style":{"fillColor":"#D8D8F0","strokeColor":"#9696C8","strokeWidth":1,"fontSize":11,"bold":true,"align":1}},
+    {"type":"oval","x":1360,"y":420,"w":120,"h":70,"text":"原子构筑","style":{"fillColor":"#E8F0F8","strokeColor":"#96B4C8","strokeWidth":1,"fontSize":11,"bold":true,"align":1}},
+
+    {"type":"roundedrect","x":490,"y":80,"w":380,"h":42,"text":"精准创制：原子级构筑","style":{"fillColor":"#3C8CC8","strokeColor":"#2878B4","strokeWidth":1.5,"fontSize":14,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"rect","x":200,"y":180,"w":270,"h":35,"text":"传统金属氯化物均相机理","style":{"fillColor":"#3C8CC8","strokeColor":"#2878B4","strokeWidth":1,"fontSize":11,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"rect","x":210,"y":230,"w":55,"h":130,"text":"快速失活","style":{"fillColor":"#F0F0F0","strokeColor":"#B4B4B4","strokeWidth":0.8,"fontSize":10,"bold":true,"align":1}},
+    {"type":"oval","x":285,"y":240,"w":70,"h":110,"text":"寿命","style":{"fillColor":"#F0F0F0","strokeColor":"#B4B4B4","strokeWidth":0.8,"fontSize":12,"bold":true,"align":1}},
+    {"type":"rect","x":375,"y":230,"w":55,"h":130,"text":"协同不足","style":{"fillColor":"#F0F0F0","strokeColor":"#B4B4B4","strokeWidth":0.8,"fontSize":10,"bold":true,"align":1}},
+    {"type":"rect","x":200,"y":375,"w":270,"h":30,"text":"依赖强酸助剂","style":{"fillColor":"#3C8CC8","strokeColor":"#2878B4","strokeWidth":1,"fontSize":11,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"rect","x":980,"y":180,"w":300,"h":35,"text":"缺电子位点+晶格氧介导路径","style":{"fillColor":"#3C8CC8","strokeColor":"#2878B4","strokeWidth":1,"fontSize":11,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"rect","x":990,"y":230,"w":65,"h":130,"text":"结构稳定","style":{"fillColor":"#F0F0F0","strokeColor":"#B4B4B4","strokeWidth":0.8,"fontSize":10,"bold":true,"align":1}},
+    {"type":"oval","x":1075,"y":240,"w":80,"h":110,"text":"长寿","style":{"fillColor":"#F0F0F0","strokeColor":"#B4B4B4","strokeWidth":0.8,"fontSize":12,"bold":true,"align":1}},
+    {"type":"rect","x":1175,"y":230,"w":65,"h":130,"text":"长效稳定","style":{"fillColor":"#F0F0F0","strokeColor":"#B4B4B4","strokeWidth":0.8,"fontSize":10,"bold":true,"align":1}},
+    {"type":"rect","x":980,"y":375,"w":300,"h":30,"text":"无需强酸助剂","style":{"fillColor":"#3C8CC8","strokeColor":"#2878B4","strokeWidth":1,"fontSize":11,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"oval","x":520,"y":150,"w":420,"h":420,"text":"","style":{"fillColor":"#E6DCF0","strokeColor":"#B4AEC8","strokeWidth":1,"dashed":true}},
+    {"type":"text","x":590,"y":155,"w":280,"h":25,"text":"缺电子金属活性位点","style":{"fontSize":12,"bold":true,"fontColor":"#5050A0","align":1}},
+    {"type":"oval","x":560,"y":190,"w":340,"h":340,"text":"","style":{"fillColor":"#D2C8E6","strokeColor":"#A8A0C8","strokeWidth":0.8}},
+    {"type":"oval","x":600,"y":230,"w":260,"h":260,"text":"","style":{"fillColor":"#B4AADC","strokeColor":"#968CC8","strokeWidth":0.8}},
+    {"type":"oval","x":640,"y":275,"w":180,"h":175,"text":"","style":{"fillColor":"#6464C8","strokeColor":"#5050B4","strokeWidth":0.8}},
+    {"type":"text","x":660,"y":410,"w":140,"h":35,"text":"表界面调控","style":{"fontSize":13,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"oval","x":670,"y":320,"w":120,"h":90,"text":"氢溢流效应","style":{"fillColor":"#50A0DC","strokeColor":"#3C8CC8","strokeWidth":0.8,"fontSize":11,"bold":true,"fontColor":"#FFFFFF","align":1}},
+    {"type":"rect","x":690,"y":280,"w":80,"h":40,"text":"关键反应","style":{"fillColor":"#FFFFFF","strokeColor":"#B4B4B4","strokeWidth":0.8,"fontSize":10,"bold":true,"align":1}},
+    {"type":"oval","x":700,"y":210,"w":60,"h":50,"text":"新活性中心","style":{"fillColor":"#5050B4","strokeColor":"#3C3CA0","strokeWidth":0.8,"fontSize":9,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"text","x":530,"y":220,"w":70,"h":80,"text":"能垒降低","style":{"fontSize":10,"bold":true,"fontColor":"#00B478","align":1,"rotation":-30}},
+    {"type":"text","x":870,"y":220,"w":70,"h":80,"text":"结构明确","style":{"fontSize":10,"bold":true,"fontColor":"#C8A032","align":1,"rotation":30}},
+    {"type":"text","x":560,"y":300,"w":60,"h":30,"text":"界面构筑","style":{"fontSize":9,"fontColor":"#000000"}},
+    {"type":"text","x":560,"y":370,"w":60,"h":30,"text":"H₂活化","style":{"fontSize":9,"fontColor":"#000000"}},
+    {"type":"text","x":850,"y":370,"w":60,"h":30,"text":"C-C偶联","style":{"fontSize":9,"fontColor":"#000000"}},
+    {"type":"text","x":830,"y":300,"w":60,"h":30,"text":"多位点协同","style":{"fontSize":9,"fontColor":"#000000"}},
+
+    {"type":"roundedrect","x":490,"y":590,"w":380,"h":42,"text":"应用验证：工业适配","style":{"fillColor":"#3C8CC8","strokeColor":"#2878B4","strokeWidth":1.5,"fontSize":14,"bold":true,"fontColor":"#FFFFFF","align":1}},
+
+    {"type":"text","x":200,"y":425,"w":270,"h":25,"text":"机理路径替代","style":{"fontSize":11,"bold":true,"fontColor":"#C8A032","align":1}},
+    {"type":"text","x":220,"y":450,"w":230,"h":25,"text":"表面晶格氧介导质子转移","style":{"fontSize":9,"fontColor":"#646464","align":1}},
+    {"type":"text","x":980,"y":425,"w":300,"h":25,"text":"结构优化路径","style":{"fontSize":11,"bold":true,"fontColor":"#C8A032","align":1}},
+    {"type":"text","x":1000,"y":450,"w":260,"h":25,"text":"双单原子强电子耦合协同","style":{"fontSize":9,"fontColor":"#646464","align":1}},
+    {"type":"text","x":200,"y":495,"w":270,"h":25,"text":"纳米鸟构筑策略","style":{"fontSize":9,"fontColor":"#B4A064","align":1}},
+    {"type":"text","x":980,"y":495,"w":300,"h":25,"text":"纳米鸟构筑策略","style":{"fontSize":9,"fontColor":"#B4A064","align":1}}
+  ],
+  "connections": [
+    {"from":1,"to":2,"style":{"endArrow":"classic","strokeColor":"#B43232","strokeWidth":2}},
+    {"from":2,"to":3,"style":{"endArrow":"classic","strokeColor":"#B43232","strokeWidth":2}},
+
+    {"from":7,"to":8,"style":{"endArrow":"classic","strokeColor":"#00B478","strokeWidth":2}},
+    {"from":8,"to":9,"style":{"endArrow":"classic","strokeColor":"#00B478","strokeWidth":2}},
+
+    {"from":13,"to":14,"style":{"endArrow":"classic","strokeColor":"#00B478","strokeWidth":2}},
+
+    {"from":17,"to":18,"style":{"endArrow":"classic","strokeColor":"#C83232","strokeWidth":2}},
+    {"from":18,"to":19,"style":{"endArrow":"classic","strokeColor":"#C83232","strokeWidth":2}},
+
+    {"from":22,"to":23,"style":{"endArrow":"classic","strokeColor":"#C83232","strokeWidth":2}},
+    {"from":23,"to":24,"style":{"endArrow":"classic","strokeColor":"#C83232","strokeWidth":2}},
+
+    {"from":25,"to":17,"style":{"endArrow":"classic","strokeColor":"#C8B464","strokeWidth":1,"dashed":true,"curved":true}},
+    {"from":25,"to":22,"style":{"endArrow":"classic","strokeColor":"#C8B464","strokeWidth":1,"dashed":true,"curved":true}},
+    {"from":44,"to":17,"style":{"endArrow":"classic","strokeColor":"#C8B464","strokeWidth":1,"dashed":true,"curved":true}},
+    {"from":44,"to":22,"style":{"endArrow":"classic","strokeColor":"#C8B464","strokeWidth":1,"dashed":true,"curved":true}}
+  ]
+}

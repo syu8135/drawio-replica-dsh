@@ -1,0 +1,45 @@
+{
+  "id": "swimlane",
+  "name": "泳道图",
+  "description": "多角色协作流程图",
+  "category": "工程图",
+
+  "style": {
+    "colors": {
+      "lane1": "#E3F2FD",
+      "lane2": "#F3E5F5",
+      "lane3": "#E8F5E9",
+      "lane4": "#FFF3E0",
+      "lane5": "#FFEBEE",
+      "process": "#2196F3",
+      "decision": "#FF9800",
+      "arrow": "#333333",
+      "text": "#000000"
+    },
+    "typography": {
+      "titleSize": 18,
+      "laneSize": 14,
+      "nodeSize": 12,
+      "fontFamily": "Microsoft YaHei"
+    },
+    "spacing": {
+      "padding": 50,
+      "laneWidth": 200,
+      "nodeGap": 60,
+      "rowGap": 80
+    }
+  },
+
+  "structure": {
+    "layout": "swimlane",
+    "nodeWidth": 100,
+    "nodeHeight": 50,
+    "processShape": "rect",
+    "decisionShape": "diamond"
+  },
+
+  "canvas": {
+    "defaultWidth": 1400,
+    "defaultHeight": 900
+  }
+}
