@@ -133,7 +133,7 @@ function needsTwoStepLayout(entities, maxAttrs = 8) {
  *   2 个：水平线（左右）
  *   3 个：倒三角 ▽（关系最多的在底部中间）
  *   4 个：方形（四角）
- *   5 个：星型（四角 + 中心，关系最多的在中心）
+ *   5 个：五边形（五个顶点均匀分布，避免中心实体遮挡连线）
  *   6 个：六边形（六个顶点）
  *   7-9 个：环形（均匀分布在圆周上）
  *   10+ 个：网格
@@ -169,12 +169,15 @@ function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH,
     positions.push({ x: centerX - spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 左下
     positions.push({ x: centerX + spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 右下
   } else if (entityCount === 5) {
-    // 星型：四角 + 中心
-    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 }); // 左上
-    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY - spreadY - entityH / 2 }); // 右上
-    positions.push({ x: centerX - spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 左下
-    positions.push({ x: centerX + spreadX - entityW / 2, y: centerY + spreadY - entityH / 2 }); // 右下
-    positions.push({ x: centerX - entityW / 2, y: centerY - entityH / 2 }); // 中心
+    // 五边形：五个顶点均匀分布在圆周上（避免星型中心实体遮挡连线）
+    // 半径受限于画布，确保所有实体在可视区域内
+    const pentRadius = Math.min(spreadX * 1.2, spreadY * 1.5, (canvasH - 2 * margin - entityH) / 2 * 0.9);
+    for (let i = 0; i < 5; i++) {
+      const angle = (2 * Math.PI / 5) * i - Math.PI / 2; // 从顶部开始
+      const x = centerX + pentRadius * Math.cos(angle) - entityW / 2;
+      const y = centerY + pentRadius * Math.sin(angle) - entityH / 2;
+      positions.push({ x, y });
+    }
   } else if (entityCount === 6) {
     // 六边形：六个顶点
     const hexRadius = Math.min(spreadX, spreadY);
@@ -215,7 +218,7 @@ function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH,
  * 根据关系数量重新排序实体
  * 
  * 3 个实体（倒三角）：关系最多的放最后（底部中间）
- * 5 个实体（星型）：关系最多的放最后（中心位置）
+ * 5 个实体（五边形）：关系最多的放顶部（index 0）
  */
 function reorderEntitiesForLayout(entities, relationships) {
   if (entities.length !== 3 && entities.length !== 5) return entities;
@@ -231,11 +234,19 @@ function reorderEntitiesForLayout(entities, relationships) {
     if (relCount[i] > relCount[maxIdx]) maxIdx = i;
   }
   
-  const targetIdx = entities.length - 1; // 最后一个位置（底部中间或中心）
   const reordered = [...entities];
-  if (maxIdx !== targetIdx) {
-    const [maxEntity] = reordered.splice(maxIdx, 1);
-    reordered.push(maxEntity);
+  if (entities.length === 3) {
+    // 倒三角：关系最多的放最后（底部中间）
+    if (maxIdx !== 2) {
+      const [maxEntity] = reordered.splice(maxIdx, 1);
+      reordered.push(maxEntity);
+    }
+  } else if (entities.length === 5) {
+    // 五边形：关系最多的放顶部（index 0）
+    if (maxIdx !== 0) {
+      const [maxEntity] = reordered.splice(maxIdx, 1);
+      reordered.unshift(maxEntity);
+    }
   }
   
   return reordered;
@@ -261,12 +272,9 @@ function getEntityDirection(entityIndex, entityCount) {
     return 'bottom-right';
   }
   if (entityCount === 5) {
-    // 星型：左上、右上、左下、右下、中心
-    if (entityIndex === 0) return 'top-left';
-    if (entityIndex === 1) return 'top-right';
-    if (entityIndex === 2) return 'bottom-left';
-    if (entityIndex === 3) return 'bottom-right';
-    return 'center';
+    // 五边形：从顶部顺时针编号
+    const dirs = ['top', 'top-right', 'bottom-right', 'bottom-left', 'top-left'];
+    return dirs[entityIndex] || 'center';
   }
   if (entityCount === 6) {
     // 六边形：从顶部顺时针编号
@@ -684,11 +692,11 @@ function layoutErd(structure) {
   }
 
   // 两步布局
-  // 3/5个实体时，关系最多的放最后（底部中间/中心位置）
+  // 3/5个实体时，关系最多的放最后（底部中间/顶部位置）
   entities = reorderEntitiesForLayout(entities, relationships);
   
-  // 上半部分：实体关系图（高度约 600px，拉开实体避免菱形重叠）
-  const relDiagramHeight = 600;
+  // 上半部分：实体关系图（根据实体数量调整高度）
+  const relDiagramHeight = entityCount <= 3 ? 500 : (entityCount <= 5 ? 700 : 800);
   // 下半部分：实体详细图（每个实体需要的高度）
   const maxAttrsPerEntity = Math.max(...entities.map(e => (e.attributes || []).length));
   const detailHeightPerEntity = entityH + 2 * (attrDistance + attrH) + 100; // 实体 + 上下属性 + 间距
