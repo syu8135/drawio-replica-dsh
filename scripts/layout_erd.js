@@ -634,11 +634,23 @@ function layoutTraditional(entities, relationships, style, canvas, title) {
     entityShapeIdx[i] = shapeIdx;
     shapeIdx++;
 
-    // 属性
+    // 属性：根据数量智能分布
     const attrs = entities[i].attributes || [];
     const attrCount = attrs.length;
-    const direction = getEntityDirection(i, entityCount);
-    const outwardDirs = getOutwardDirections(direction);
+    
+    // 智能分布策略：
+    // <= 4 个：全部放上方
+    // 5-8 个：上方和下方
+    // > 8 个：四个方向（但传统布局最多8个，所以这里用上方+下方）
+    let outwardDirs = [];
+    if (attrCount <= 4) {
+      outwardDirs = ['top'];
+    } else if (attrCount <= 8) {
+      outwardDirs = ['top', 'bottom'];
+    } else {
+      outwardDirs = ['top', 'bottom', 'left', 'right'];
+    }
+    
     const perDir = Math.ceil(attrCount / outwardDirs.length);
     const dirAttrs = {};
     outwardDirs.forEach((dir, idx) => {
