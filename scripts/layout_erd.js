@@ -266,42 +266,62 @@ function reorderEntitiesForLayout(entities, relationships) {
 function reorderEntitiesForRing(entities, relationships) {
   if (entities.length < 5) return entities;
   
-  const relCount = entities.map(e =>
-    relationships.filter(r => r.from === e.name || r.to === e.name).length);
   const hasEdge = (a, b) =>
     relationships.some(r => (r.from === a && r.to === b) || (r.from === b && r.to === a));
   
-  // 从关系最多的实体开始（放在顶部 index 0）
-  let start = 0;
-  for (let i = 1; i < relCount.length; i++) {
-    if (relCount[i] > relCount[start]) start = i;
-  }
-  
-  const order = [entities[start]];
-  const used = new Set([start]);
-  
-  while (order.length < entities.length) {
-    const last = order[order.length - 1];
-    let best = -1, bestConn = -1, bestConnLast = 0, bestRel = -1;
-    for (let i = 0; i < entities.length; i++) {
-      if (used.has(i)) continue;
-      // 与已放置实体的连接数
-      let conn = 0;
-      for (const e of order) {
-        if (hasEdge(e.name, entities[i].name)) conn++;
+  // 计算两个排列的交叉数（环形布局）
+  const countCrossings = (perm) => {
+    const n = perm.length;
+    const pos = {};
+    perm.forEach((e, i) => pos[e.name] = i);
+    
+    let crossings = 0;
+    const edges = [];
+    relationships.forEach(r => {
+      const p1 = pos[r.from], p2 = pos[r.to];
+      if (p1 !== undefined && p2 !== undefined) {
+        edges.push([Math.min(p1, p2), Math.max(p1, p2)]);
       }
-      const connLast = hasEdge(last.name, entities[i].name) ? 1 : 0;
-      if (conn > bestConn ||
-          (conn === bestConn && connLast > bestConnLast) ||
-          (conn === bestConn && connLast === bestConnLast && relCount[i] > bestRel)) {
-        best = i; bestConn = conn; bestConnLast = connLast; bestRel = relCount[i];
+    });
+    
+    for (let i = 0; i < edges.length; i++) {
+      for (let j = i + 1; j < edges.length; j++) {
+        const [a, b] = edges[i];
+        const [c, d] = edges[j];
+        // 两条弦交叉当且仅当端点交替：a<c<b<d 或 c<a<d<b
+        if ((a < c && c < b && b < d) || (c < a && a < d && d < b)) {
+          crossings++;
+        }
       }
     }
-    order.push(entities[best]);
-    used.add(best);
+    return crossings;
+  };
+  
+  // 找到关系最多的实体，固定在位置 0（环顶部）
+  const relCount = entities.map(e =>
+    relationships.filter(r => r.from === e.name || r.to === e.name).length);
+  let startIdx = 0;
+  for (let i = 1; i < relCount.length; i++) {
+    if (relCount[i] > relCount[startIdx]) startIdx = i;
   }
   
-  return order;
+  const fixed = entities[startIdx];
+  const remaining = entities.filter((e, i) => i !== startIdx);
+  
+  // 枚举所有排列（最多 6! = 720 种）
+  const perms = generatePermutations(remaining);
+  let bestPerm = [fixed, ...perms[0]], bestCrossings = Infinity;
+  
+  for (const perm of perms) {
+    const candidate = [fixed, ...perm];
+    const crossings = countCrossings(candidate);
+    if (crossings < bestCrossings) {
+      bestCrossings = crossings;
+      bestPerm = candidate;
+    }
+  }
+  
+  return bestPerm;
 }
 
 /**
