@@ -187,8 +187,8 @@ function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH,
       const y = centerY + hexRadius * Math.sin(angle) - entityH / 2;
       positions.push({ x, y });
     }
-  } else if (entityCount >= 7 && entityCount <= 10) {
-    // 7-10 个：环形布局（均匀分布在圆周上，使用统一半径，确保正圆）
+  } else if (entityCount >= 7 && entityCount <= 9) {
+    // 7-9 个：环形布局（均匀分布在圆周上，使用统一半径，确保正圆）
     const maxRadius = Math.min(
       (canvasW - 2 * margin - entityW) / 2 * 0.85,
       (canvasH - 2 * margin - entityH) / 2 * 0.85
@@ -924,9 +924,9 @@ function layoutErd(structure) {
   const attrDistance = style.spacing.attrDistance || 70;
   const margin = 150;
 
-  // 超过 10 个实体：拒绝生成，提示用户拆分
-  if (entityCount > 10) {
-    throw new Error(`实体数量过多（${entityCount} 个），每个 E-R 图最多支持 10 个实体。请拆分为多个 E-R 图后分别生成。`);
+  // 超过 8 个实体：拒绝生成，提示用户拆分
+  if (entityCount > 8) {
+    throw new Error(`实体数量过多（${entityCount} 个），每个 E-R 图最多支持 8 个实体。请减少实体数量或拆分为多个 E-R 图后分别生成。`);
   }
 
   // 检查是否需要两步布局（实体数 > 4 或任一实体属性数 > 8）
