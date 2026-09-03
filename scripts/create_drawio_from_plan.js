@@ -15,16 +15,17 @@ const { layoutErd } = require('./layout_erd');
 
 // ============ 命令行参数解析 ============
 const args = process.argv.slice(2);
-let planPath = null, outputPath = null, pngOutput = null;
+let planPath = null, outputPath = null, pngOutput = null, confirmFlag = false;
 
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--plan' && args[i + 1]) { planPath = args[++i]; }
   else if (args[i] === '--output' && args[i + 1]) { outputPath = args[++i]; }
   else if (args[i] === '--png' && args[i + 1]) { pngOutput = args[++i]; }
+  else if (args[i] === '--confirm') { confirmFlag = true; }
 }
 
 if (!planPath || !outputPath) {
-  console.error('用法: node create_drawio_from_plan.js --plan <plan.json> --output <output.drawio> [--png <output.png>]');
+  console.error('用法: node create_drawio_from_plan.js --plan <plan.json> --output <output.drawio> [--png <output.png>] [--confirm]');
   process.exit(1);
 }
 
@@ -117,7 +118,13 @@ if (rawPlan.template === 'func-structure' || rawPlan.layout === 'func-structure'
     });
     
     console.log('\n请确认以上信息是否正确。');
-    console.log('如正确，将继续生成图形；如不正确，请修改输入文件后重试。\n');
+    console.log('如正确，请添加 --confirm 参数重新运行以生成图形；如不正确，请修改输入文件后重试。\n');
+  }
+  
+  if (!confirmFlag) {
+    console.log('⚠️  未指定 --confirm 参数，已跳过生成。');
+    console.log('如需生成，请重新运行并添加 --confirm 参数。');
+    process.exit(0);
   }
   
   plan = layoutErd(rawPlan);
@@ -127,6 +134,13 @@ if (rawPlan.template === 'func-structure' || rawPlan.layout === 'func-structure'
 } else {
   console.log(' 使用坐标模式...');
   plan = rawPlan;
+}
+
+// 检查确认标志
+if (!confirmFlag) {
+  console.log('⚠️  未指定 --confirm 参数，已跳过生成。');
+  console.log('如需生成，请重新运行并添加 --confirm 参数。');
+  process.exit(0);
 }
 
 const page = plan.page || { name: 'Draw.io Replica', width: 800, height: 600 };
