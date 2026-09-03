@@ -188,12 +188,12 @@ function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH,
       positions.push({ x, y });
     }
   } else if (entityCount >= 7 && entityCount <= 9) {
-    // 环形：均匀分布在圆周上（半径随实体数增加，避免拥挤）
-    const ringRadius = Math.min(
-      spreadX * (1 + (entityCount - 6) * 0.2),
-      spreadY * (1 + (entityCount - 6) * 0.3),
-      (canvasH - 2 * margin - entityH) / 2 * 0.9
+    // 环形：均匀分布在圆周上（使用统一半径，确保正圆）
+    const maxRadius = Math.min(
+      (canvasW - 2 * margin - entityW) / 2 * 0.85,
+      (canvasH - 2 * margin - entityH) / 2 * 0.85
     );
+    const ringRadius = maxRadius * (1 + (entityCount - 7) * 0.1);
     for (let i = 0; i < entityCount; i++) {
       const angle = (2 * Math.PI / entityCount) * i - Math.PI / 2; // 从顶部开始
       const x = centerX + ringRadius * Math.cos(angle) - entityW / 2;
@@ -464,8 +464,8 @@ function computeHubRadialPositions(entities, relationships, hubIdx, canvasW, can
     used.add(pick);
   }
 
-  // 排列优化：对 ≤6 辐条枚举所有排列，选环上相邻边最多的（避免对径点有边导致菱形与枢纽重叠）
-  if (ordered.length <= 6) {
+  // 排列优化：对 ≤7 辐条枚举所有排列，选环上相邻边最多的（避免对径点有边导致菱形与枢纽重叠）
+  if (ordered.length <= 7) {
     const permutations = generatePermutations(ordered);
     let bestPerm = ordered, bestAdj = -1;
     for (const perm of permutations) {
