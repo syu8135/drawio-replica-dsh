@@ -297,6 +297,52 @@ function reorderEntitiesForRing(entities, relationships) {
     return crossings;
   };
   
+  // 计算环边数（图中有边且环上相邻）
+  const countRingEdges = (perm) => {
+    const n = perm.length;
+    const pos = {};
+    perm.forEach((e, i) => pos[e.name] = i);
+    let count = 0;
+    relationships.forEach(r => {
+      const p1 = pos[r.from], p2 = pos[r.to];
+      if (p1 !== undefined && p2 !== undefined) {
+        const dist = Math.min(Math.abs(p1 - p2), n - Math.abs(p1 - p2));
+        if (dist === 1) count++;
+      }
+    });
+    return count;
+  };
+  
+  // 计算弦惩罚（高度数实体的弦数加权）
+  const chordPenalty = (perm) => {
+    const n = perm.length;
+    const pos = {};
+    perm.forEach((e, i) => pos[e.name] = i);
+    const chordCount = {};
+    relationships.forEach(r => {
+      const p1 = pos[r.from], p2 = pos[r.to];
+      if (p1 !== undefined && p2 !== undefined) {
+        const dist = Math.min(Math.abs(p1 - p2), n - Math.abs(p1 - p2));
+        if (dist > 1) {
+          chordCount[r.from] = (chordCount[r.from] || 0) + 1;
+          chordCount[r.to] = (chordCount[r.to] || 0) + 1;
+        }
+      }
+    });
+    // 计算度数
+    const degCount = {};
+    relationships.forEach(r => {
+      degCount[r.from] = (degCount[r.from] || 0) + 1;
+      degCount[r.to] = (degCount[r.to] || 0) + 1;
+    });
+    // 加权惩罚
+    let penalty = 0;
+    for (const entity in chordCount) {
+      penalty += chordCount[entity] * (degCount[entity] || 1);
+    }
+    return penalty;
+  };
+  
   // 找到关系最多的实体，固定在位置 0（环顶部）
   const relCount = entities.map(e =>
     relationships.filter(r => r.from === e.name || r.to === e.name).length);
@@ -310,13 +356,26 @@ function reorderEntitiesForRing(entities, relationships) {
   
   // 枚举所有排列（最多 6! = 720 种）
   const perms = generatePermutations(remaining);
-  let bestPerm = [fixed, ...perms[0]], bestCrossings = Infinity;
+  let bestPerm = [fixed, ...perms[0]];
+  let bestCrossings = Infinity;
+  let bestRingEdges = -1;
+  let bestPenalty = Infinity;
   
   for (const perm of perms) {
     const candidate = [fixed, ...perm];
     const crossings = countCrossings(candidate);
-    if (crossings < bestCrossings) {
+    const ringEdges = countRingEdges(candidate);
+    const penalty = chordPenalty(candidate);
+    
+    // 一级：最小化交叉
+    // 二级：最大化环边
+    // 三级：最小化弦惩罚
+    if (crossings < bestCrossings || 
+        (crossings === bestCrossings && ringEdges > bestRingEdges) ||
+        (crossings === bestCrossings && ringEdges === bestRingEdges && penalty < bestPenalty)) {
       bestCrossings = crossings;
+      bestRingEdges = ringEdges;
+      bestPenalty = penalty;
       bestPerm = candidate;
     }
   }
