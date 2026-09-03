@@ -188,8 +188,12 @@ function computeEntityPositions(entityCount, canvasW, canvasH, entityW, entityH,
       positions.push({ x, y });
     }
   } else if (entityCount >= 7 && entityCount <= 9) {
-    // 环形：均匀分布在圆周上
-    const ringRadius = Math.min(spreadX, spreadY);
+    // 环形：均匀分布在圆周上（半径随实体数增加，避免拥挤）
+    const ringRadius = Math.min(
+      spreadX * (1 + (entityCount - 6) * 0.2),
+      spreadY * (1 + (entityCount - 6) * 0.3),
+      (canvasH - 2 * margin - entityH) / 2 * 0.9
+    );
     for (let i = 0; i < entityCount; i++) {
       const angle = (2 * Math.PI / entityCount) * i - Math.PI / 2; // 从顶部开始
       const x = centerX + ringRadius * Math.cos(angle) - entityW / 2;
