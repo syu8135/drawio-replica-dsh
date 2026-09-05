@@ -1,0 +1,17 @@
+[
+  { "from": "start", "to": "login_page", "label": "" },
+  { "from": "login_page", "to": "check_register", "label": "" },
+  { "from": "check_register", "to": "register", "label": "否", "isBranch": true, "direction": "right" },
+  { "from": "register", "to": "login_page", "label": "", "isReturn": true },
+  { "from": "check_register", "to": "check_remember", "label": "是" },
+  { "from": "check_remember", "to": "input_manual", "label": "否", "isBranch": true, "direction": "left" },
+  { "from": "check_remember", "to": "input_auto", "label": "是", "isBranch": true, "direction": "right" },
+  { "from": "input_manual", "to": "do_login", "label": "" },
+  { "from": "input_auto", "to": "do_login", "label": "" },
+  { "from": "do_login", "to": "check_result", "label": "" },
+  { "from": "check_result", "to": "error_account", "label": "账号错误", "isBranch": true, "direction": "left" },
+  { "from": "check_result", "to": "error_password", "label": "密码错误", "isBranch": true, "direction": "right" },
+  { "from": "error_account", "to": "login_page", "label": "", "isReturn": true },
+  { "from": "error_password", "to": "check_remember", "label": "", "isReturn": true },
+  { "from": "check_result", "to": "success", "label": "通过" }
+]

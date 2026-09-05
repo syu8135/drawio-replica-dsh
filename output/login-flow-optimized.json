@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    { "id": "start", "text": "开始", "type": "start" },
+    { "id": "login_page", "text": "登录页面", "type": "process" },
+    { "id": "check_register", "text": "是否已注册？", "type": "decision" },
+    { "id": "register", "text": "注册页面", "type": "process" },
+    { "id": "check_remember", "text": "已保存密码？", "type": "decision" },
+    { "id": "input_account", "text": "输入账号", "type": "io" },
+    { "id": "input_password", "text": "输入密码", "type": "io" },
+    { "id": "do_login", "text": "点击登录", "type": "process" },
+    { "id": "check_result", "text": "验证结果？", "type": "decision" },
+    { "id": "error_account", "text": "提示：账号不存在", "type": "io" },
+    { "id": "error_password", "text": "提示：密码错误", "type": "io" },
+    { "id": "success", "text": "进入系统", "type": "result" }
+  ],
+  "flows": [
+    { "from": "start", "to": "login_page", "label": "" },
+    { "from": "login_page", "to": "check_register", "label": "" },
+    { "from": "check_register", "to": "register", "label": "否", "isBranch": true, "direction": "right" },
+    { "from": "register", "to": "login_page", "label": "", "isReturn": true },
+    { "from": "check_register", "to": "check_remember", "label": "是" },
+    { "from": "check_remember", "to": "input_account", "label": "否", "isBranch": true, "direction": "left" },
+    { "from": "input_account", "to": "input_password", "label": "" },
+    { "from": "input_password", "to": "do_login", "label": "" },
+    { "from": "check_remember", "to": "do_login", "label": "是", "isBranch": true, "direction": "right" },
+    { "from": "do_login", "to": "check_result", "label": "" },
+    { "from": "check_result", "to": "error_account", "label": "账号错误", "isBranch": true, "direction": "left" },
+    { "from": "check_result", "to": "error_password", "label": "密码错误", "isBranch": true, "direction": "right" },
+    { "from": "check_result", "to": "success", "label": "通过" },
+    { "from": "error_account", "to": "login_page", "label": "", "isReturn": true },
+    { "from": "error_password", "to": "login_page", "label": "", "isReturn": true }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  { "id": "start", "text": "开始", "type": "start" },
+  { "id": "login_page", "text": "登录页面", "type": "process" },
+  { "id": "check_register", "text": "是否已注册？", "type": "decision" },
+  { "id": "register", "text": "注册页面", "type": "process" },
+  { "id": "check_remember", "text": "已保存密码？", "type": "decision" },
+  { "id": "input_manual", "text": "手动输入账号密码", "type": "process" },
+  { "id": "input_auto", "text": "自动填充账号密码", "type": "process" },
+  { "id": "do_login", "text": "点击登录", "type": "process" },
+  { "id": "check_result", "text": "验证结果？", "type": "decision" },
+  { "id": "error_account", "text": "提示：账号不存在", "type": "io" },
+  { "id": "error_password", "text": "提示：密码错误", "type": "io" },
+  { "id": "success", "text": "进入系统", "type": "result" }
+]
