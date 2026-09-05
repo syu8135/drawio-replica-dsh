@@ -1,0 +1,36 @@
+{
+  "title": "用户登录流程",
+  "nodes": [
+    { "id": "start", "type": "start", "text": "开始" },
+    { "id": "login_page", "type": "process", "text": "登录页面" },
+    { "id": "check_register", "type": "decision", "text": "是否已注册？" },
+    { "id": "register", "type": "process", "text": "注册页面", "branch": true, "direction": "right", "label": "否" },
+    { "id": "check_remember", "type": "decision", "text": "记住密码？" },
+    { "id": "input_manual", "type": "process", "text": "手动输入账号密码", "branch": true, "direction": "left", "label": "否" },
+    { "id": "input_auto", "type": "process", "text": "自动填充账号密码", "branch": true, "direction": "right", "label": "是" },
+    { "id": "do_login", "type": "process", "text": "点击登录" },
+    { "id": "check_result", "type": "decision", "text": "验证结果？" },
+    { "id": "error_account", "type": "process", "text": "提示：账号不存在", "branch": true, "direction": "left", "label": "账号错误" },
+    { "id": "error_password", "type": "process", "text": "提示：密码错误", "branch": true, "direction": "right", "label": "密码错误" },
+    { "id": "success", "type": "process", "text": "进入系统", "branch": true, "direction": "center", "label": "通过" },
+    { "id": "end", "type": "end", "text": "结束" }
+  ],
+  "flows": [
+    { "from": "start", "to": "login_page" },
+    { "from": "login_page", "to": "check_register" },
+    { "from": "check_register", "to": "register", "label": "否" },
+    { "from": "check_register", "to": "check_remember", "label": "是" },
+    { "from": "register", "to": "login_page", "label": "注册完成" },
+    { "from": "check_remember", "to": "input_manual", "label": "否" },
+    { "from": "check_remember", "to": "input_auto", "label": "是" },
+    { "from": "input_manual", "to": "do_login" },
+    { "from": "input_auto", "to": "do_login" },
+    { "from": "do_login", "to": "check_result" },
+    { "from": "check_result", "to": "error_account", "label": "账号错误" },
+    { "from": "check_result", "to": "error_password", "label": "密码错误" },
+    { "from": "check_result", "to": "success", "label": "通过" },
+    { "from": "error_account", "to": "login_page", "label": "返回" },
+    { "from": "error_password", "to": "login_page", "label": "返回" },
+    { "from": "success", "to": "end" }
+  ]
+}
